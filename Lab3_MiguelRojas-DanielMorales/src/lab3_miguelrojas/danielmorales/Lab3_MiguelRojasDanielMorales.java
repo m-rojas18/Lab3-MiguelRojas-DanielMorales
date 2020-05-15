@@ -11,6 +11,7 @@ public class Lab3_MiguelRojasDanielMorales {
     static Scanner input = new Scanner(System.in);
     static ArrayList lista_usuarios = new ArrayList();
     static ArrayList lista_uids = new ArrayList();
+    static ArrayList lista_ropa = new ArrayList();
 
     public static void main(String[] args) throws ParseException {
 
@@ -462,6 +463,7 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 }
                                                                 Ropa r = new Ropa(sexo, talla, descripRopa, nombreRopa, precioRopa);
                                                                 lista_productos.add(r);
+                                                                lista_ropa.add(r);
                                                                 break;
                                                             case 2:
                                                                 System.out.println("Ingrese el nombre del juguete: ");
@@ -526,6 +528,9 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         System.out.println();
                                                         switch (op_productoMod) {
                                                             case 1:
+                                                                System.out.println("Que ropa desea modificar: ");
+                                                                //muestra
+                                                                
                                                                 break;
                                                             case 2:
                                                                 break;
