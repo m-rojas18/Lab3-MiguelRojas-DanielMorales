@@ -11,7 +11,7 @@ public class Lab3_MiguelRojasDanielMorales {
     static Scanner input = new Scanner(System.in);
     static ArrayList lista_usuarios = new ArrayList();
     static ArrayList lista_uids = new ArrayList();
-    static ArrayList lista_ropa = new ArrayList();
+    static ArrayList<Ropa> lista_ropa = new ArrayList();
 
     public static void main(String[] args) throws ParseException {
 
@@ -530,6 +530,20 @@ public class Lab3_MiguelRojasDanielMorales {
                                                             case 1:
                                                                 System.out.println("Que ropa desea modificar: ");
                                                                 //muestra
+                                                                String salida_ropa = "";
+                                                                for (int i = 0; i < lista_ropa.size(); i++) {
+                                                                    Ropa r = lista_ropa.get(i);
+                                                                    salida_ropa += "[" + i + "] " + "Nombre: " + r.getNombre() + "\n"
+                                                                                    + "Descripcion: " + r.getDescripcion() + "\n"
+                                                                                    + "Precio: " + r.getPrecio() + "lps.\n"
+                                                                                    + "Sexo: " + r.getSexo() + "\n"
+                                                                                    + "Talla: " + r.getTalla() + "\n"
+                                                                                    + "---------------------\n";
+                                                                    
+                                                                    System.out.println("Lista de Ropa\n"
+                                                                            + salida_ropa + "\n"
+                                                                            + "Eliga opcion a modificar: ");
+                                                                }
                                                                 
                                                                 break;
                                                             case 2:
