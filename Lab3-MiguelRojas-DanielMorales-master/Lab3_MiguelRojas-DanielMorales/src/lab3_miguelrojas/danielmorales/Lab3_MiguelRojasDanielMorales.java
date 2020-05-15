@@ -543,6 +543,87 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                     System.out.println("Lista de Ropa\n"
                                                                             + salida_ropa + "\n"
                                                                             + "Eliga opcion a modificar: ");
+                                                                    int op_modRopa = input.nextInt();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    //Instanciar objeto de Ropa
+                                                                    Ropa mod_r = lista_ropa.get(op_modRopa);
+                                                                    boolean flag_opMod = true;
+                                                                    while(flag_opMod){
+                                                                        System.out.print("Opciones Modificacion\n"
+                                                                                + "[1] Descripcion\n"
+                                                                                + "[2] Nombre\n"
+                                                                                + "[3] Precio\n"
+                                                                                + "[4] Sexo\n"
+                                                                                + "[5] Talla\n"
+                                                                                + "[6] Salir\n"
+                                                                                + "Eliga una opcion: ");
+                                                                        int op_modificion = input.nextInt();
+                                                                        System.out.println();
+                                                                        switch(op_modificion){
+                                                                            case 1:
+                                                                                System.out.print("Ingrese nueva descripcion: ");
+                                                                                String mod_descripcion = input.nextLine();
+                                                                                mod_descripcion = input.nextLine();
+                                                                                mod_r.setDescripcion(mod_descripcion);
+                                                                                System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 2:
+                                                                                System.out.print("Ingrese nuevo nombre de ropa: ");
+                                                                                String mod_nombre = input.next();
+                                                                                mod_r.setNombre(mod_nombre);
+                                                                                 System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 3:
+                                                                                 System.out.print("Ingrese nuevo precio de ropa: ");
+                                                                                 int mod_precio = input.nextInt();
+                                                                                 mod_r.setPrecio(mod_precio);
+                                                                                 System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 4:
+                                                                                System.out.println("Sexo\n"
+                                                                                        + "[1] Hombre\n"
+                                                                                        + "[2] Mujer\n"
+                                                                                        + "Eliga una opcion: ");
+                                                                                int op_modSexo = input.nextInt();
+                                                                                System.out.println();
+                                                                                if (op_modSexo == 1) {
+                                                                                    mod_r.setSexo("Hombre");
+                                                                                } else {
+                                                                                    mod_r.setSexo("Mujer");
+                                                                                }
+                                                                                 System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 5:
+                                                                                System.out.println("Modificar Tallas\n"
+                                                                                        + "[1] S\n"
+                                                                                        + "[2] M\n"
+                                                                                        + "[3] L\n"
+                                                                                        + "[4] XL\n"
+                                                                                        + "Eliga una opcion: ");
+                                                                                int op_modTalla = input.nextInt();
+                                                                                System.out.println();
+                                                                                if (op_modTalla == 1) {
+                                                                                    mod_r.setTalla("S");
+                                                                                }
+                                                                                if (op_modTalla == 2) {
+                                                                                     mod_r.setTalla("M");
+                                                                                }
+                                                                                if (op_modTalla == 3) {
+                                                                                     mod_r.setTalla("L");
+                                                                                }
+                                                                                if (op_modTalla == 4) {
+                                                                                     mod_r.setTalla("XL");
+                                                                                }
+                                                                                 System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 6:
+                                                                                flag_opMod = false;
+                                                                                break;
+                                                                            default:
+                                                                                System.out.println("Ingrese una opcion valida.");
+                                                                        }
+                                                                    }
                                                                 }
                                                                 
                                                                 break;
