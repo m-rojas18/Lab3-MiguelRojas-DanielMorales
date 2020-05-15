@@ -10,6 +10,7 @@ public class Lab3_MiguelRojasDanielMorales {
 
     static Scanner input = new Scanner(System.in);
     static ArrayList lista_usuarios = new ArrayList();
+    static ArrayList lista_uids = new ArrayList();
 
     public static void main(String[] args) throws ParseException {
 
@@ -38,6 +39,19 @@ public class Lab3_MiguelRojasDanielMorales {
                     String usuario = input.nextLine();
                     input = new Scanner(System.in);
                     System.out.println();
+                    boolean userOrigCheck = false;
+                    if (lista_usuarios.contains(usuario)) {
+                        System.out.println("Usuario ya existente");
+                        while (userOrigCheck==false) {
+                            System.out.println("Ingrese el usuario: ");
+                            usuario = input.next();
+                            if (lista_usuarios.contains(usuario)) {
+                                
+                            } else{
+                                userOrigCheck=true;
+                            }
+                        }
+                    }
                     //Contraseña: 
                     System.out.print("Ingrese una contraseña: ");
                     String password = input.next();
@@ -102,6 +116,7 @@ public class Lab3_MiguelRojasDanielMorales {
                         }
                     } else {
                         System.out.println("Usuario incorrecto. ");
+                        break;
                     }
 
                     char opResp = 's';
@@ -124,11 +139,64 @@ public class Lab3_MiguelRojasDanielMorales {
         }
     }
 
-    public static void login() {
 
-    }
 
     public static void menu() {
+
+        boolean flag_menuAdmin = true;
+        while (flag_menuAdmin) {
+            System.out.print("-------------------\n"
+                    + "[1] Manejar Locales\n"
+                    + "[2] Manejar Personas\n"
+                    + "[3] Manejar Productos\n"
+                    + "[4] Salir\n"
+                    + "Seleccione una opcion: ");
+            int op_menu1 = input.nextInt();
+            System.out.println();
+            switch (op_menu1) {
+                case 1:
+                    boolean flag_menuLocal = true;
+                    while (flag_menuLocal) {
+                        System.out.print("-------------------\n"
+                                + "[1] Crear Local\n"
+                                + "[2] Modificar Local\n"
+                                + "[3] Eliminar Local\n"
+                                + "[4] Salir\n"
+                                + "Eliga una opcion: ");
+                        int op_menuLocal = input.nextInt();
+                        System.out.println();
+                        switch (op_menuLocal) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                flag_menuLocal = false;
+                                break;
+                            default:
+                                System.out.println("Ingrese una opcion valida.\n");
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.print("--------------------\n"
+                            + "[1] Crear Persona\n"
+                            + "[2] Modificar Persona\n"
+                            + "[3] Eliminar Persona\n"
+                            + "[4] Salir\n"
+                            + "Eliga una opcion: ");
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    flag_menuAdmin = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida.\n");
+            }
+        }
     }
 
 }
