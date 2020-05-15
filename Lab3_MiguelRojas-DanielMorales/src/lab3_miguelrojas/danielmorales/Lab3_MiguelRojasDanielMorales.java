@@ -98,7 +98,6 @@ public class Lab3_MiguelRojasDanielMorales {
                         if (passRecibida.equalsIgnoreCase("sudo")) {
                             authSUDO = true;
                             System.out.println("Usuario autenticado. ");
-                            break;
 
                         } else {
                             System.out.println("Password incorrecta. ");
