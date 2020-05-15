@@ -83,5 +83,23 @@ public class Lab3_MiguelRojasDanielMorales {
             }
         }
     }
+    
+    public static void login(){
+        boolean authSUDO = false;
+        System.out.println("Ingrese el usuario: ");
+        String userRecibido = input.next();
+        System.out.println("Ingrese la password: ");
+        String passRecibida = input.next();
+        if (userRecibido.equalsIgnoreCase("SUDO")) {
+            if (passRecibida.equalsIgnoreCase("sudo")) {
+                authSUDO = true;
+                System.out.println("Usuario autenticado. ");
+            } else {
+                System.out.println("Password incorrecta. ");
+            }
+        } else {
+            System.out.println("Usuario incorrecto. ");
+        } 
+    }
 
 }
