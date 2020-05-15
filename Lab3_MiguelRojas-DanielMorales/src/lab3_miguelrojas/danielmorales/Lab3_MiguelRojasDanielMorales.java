@@ -15,6 +15,9 @@ public class Lab3_MiguelRojasDanielMorales {
     public static void main(String[] args) throws ParseException {
 
         ArrayList<Cliente> lista_clientes = new ArrayList();
+        ArrayList<Empleado> lista_empleados = new ArrayList();
+        ArrayList<Producto> lista_productos = new ArrayList();
+        ArrayList<Tiendas> lista_tiendas = new ArrayList();
 
         char resp = 's';
         while (resp == 's' || resp == 'S') {
@@ -125,7 +128,8 @@ public class Lab3_MiguelRojasDanielMorales {
                         } else if (authSUDO == true) {
                             boolean flag_menuAdmin = true;
                             while (flag_menuAdmin) {
-                                System.out.print("-------------------\n"
+                                System.out.print("-------------------"
+                                        + "Menu de Administrador\n"
                                         + "[1] Manejar Locales\n"
                                         + "[2] Manejar Personas\n"
                                         + "[3] Manejar Productos\n"
@@ -163,12 +167,54 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         switch (op_crearLocal) {
                                                             case 1:
                                                                 System.out.print("--------------------\n"
-                                                                        + "Crear Tienda\n"
-                                                                        + "Ingrese nombre de tienda: ");
-                                                                String nombre_tienda = input.nextLine();
-                                                                input = new Scanner(System.in);
-                                                                System.out.println();
-                                                                System.out.print("");
+                                                                        + "Crear Tienda\n");
+                                                                boolean flag_empleados = true;
+                                                                boolean flag_productos = true;
+                                                                if (lista_empleados.isEmpty()) {
+                                                                    System.out.println("No hay empleados disponibles.\n"
+                                                                            + "Debe Contratar empleados(Crear).\n");
+                                                                } else {
+                                                                    flag_empleados = false;
+                                                                }
+
+                                                                if (lista_productos.isEmpty()) {
+                                                                    System.out.print("No hay productos disponibles.\n"
+                                                                            + "Debe crear nuevos productos antes de crear una tienda.\n");
+                                                                } else {
+                                                                    flag_productos = false;
+                                                                }
+                                                                
+                                                                
+                                                                if (flag_empleados == false && flag_productos == false) {
+                                                                    System.out.print("Ingrese nombre de la tienda: ");
+                                                                    String nombre_tienda = input.nextLine();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    String salida_empleados = "";
+                                                                    for (int i = 0; i < lista_empleados.size(); i++) {
+                                                                        Empleado e = lista_empleados.get(i);
+                                                                        salida_empleados += "[" + i + "] ID:" + e.getId() + "\n"
+                                                                                + "Nombre: " + e.getNombre_completo() + "\n"
+                                                                                + "Correo" + e.getCorreo_electronico() + "\n"
+                                                                                + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
+                                                                    }
+                                                                    boolean add_empleados = true;
+                                                                    while(add_empleados){
+                                                                        System.out.println("Lista de Empleados\n"
+                                                                    + salida_empleados + "\n"
+                                                                    + "Eliga un empleado");
+                                                                    int op_empleado = input.nextInt();
+                                                                    
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.print("Desea agregar otro empleados?\n"
+                                                                             + "[1] Si\n"
+                                                                             + "[2] No\n"
+                                                                             + "Eliga una opcion: ");
+                                                                    
+ 
+                                                                    }
+                                                                    
+                                                                }
                                                                 break;
                                                             case 2:
                                                                 break;
