@@ -34,6 +34,19 @@ public class Lab3_MiguelRojasDanielMorales {
                     String id = input.next();
                     input = new Scanner(System.in);
                     System.out.println();
+                    boolean idOrigCheck = false;
+                    if (lista_uids.contains(id)) {
+                        System.out.println("ID ya existente.");
+                        while (idOrigCheck==false) {
+                            System.out.println("Ingrese su id:");
+                            id = input.next();
+                            if (lista_uids.contains(id)) {
+                                System.out.println("ID ya existente");
+                            } else {
+                                idOrigCheck = true;
+                            }
+                        }
+                    }
                     //Usuario
                     System.out.print("Ingrese un usuario: ");
                     String usuario = input.nextLine();
@@ -43,10 +56,10 @@ public class Lab3_MiguelRojasDanielMorales {
                     if (lista_usuarios.contains(usuario)) {
                         System.out.println("Usuario ya existente");
                         while (userOrigCheck == false) {
-                            System.out.println("Ingrese el usuario: ");
+                            System.out.println("Ingrese un usuario: ");
                             usuario = input.next();
                             if (lista_usuarios.contains(usuario)) {
-
+                                System.out.println("Usuario ya existente");
                             } else {
                                 userOrigCheck = true;
                             }
@@ -83,6 +96,7 @@ public class Lab3_MiguelRojasDanielMorales {
                     //Agregar a lista de clientes
                     lista_clientes.add(new Cliente(cantidad_dinero, id, usuario, password, correo, nombre_completo, fecha_nacimiento));
                     lista_usuarios.add(usuario);
+                    lista_uids.add(id);
                     System.out.println("Se creo la cuenta exitosamente!!\n");
                     break;
 
