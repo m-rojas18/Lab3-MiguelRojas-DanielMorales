@@ -5,6 +5,8 @@
  */
 package lab3_miguelrojas.danielmorales;
 
+import java.util.Scanner;
+
 /**
  *
  * @author miguel
@@ -14,8 +16,26 @@ public class Lab3_MiguelRojasDanielMorales {
     /**
      * @param args the command line arguments
      */
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        char resp = 's';
+        while (resp == 's' || resp == 'S') {
+            System.out.println("Bienvenido al Shopping Mall de muy muy lejos.");
+            System.out.println("1. Sign in");
+            System.out.println("2. Log in");
+            System.out.println("3. Salir");
+            int op = input.nextInt();
+            switch (op) {
+                case 1:
+                    
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.exit(0);
+            }
+        }
     }
-    
+
 }
