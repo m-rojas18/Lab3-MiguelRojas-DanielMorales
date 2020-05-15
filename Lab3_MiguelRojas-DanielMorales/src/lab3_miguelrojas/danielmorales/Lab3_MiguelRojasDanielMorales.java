@@ -6,17 +6,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-
 public class Lab3_MiguelRojasDanielMorales {
-
 
     static Scanner input = new Scanner(System.in);
     static ArrayList lista_usuarios = new ArrayList();
 
     public static void main(String[] args) throws ParseException {
-        
+
         ArrayList<Cliente> lista_clientes = new ArrayList();
-        
+
         char resp = 's';
         while (resp == 's' || resp == 'S') {
             System.out.println("Bienvenido al Shopping Mall de muy muy lejos.");
@@ -27,7 +25,7 @@ public class Lab3_MiguelRojasDanielMorales {
             input = new Scanner(System.in);
             System.out.println();
             switch (op) {
-                case 1:
+                case 1: {
                     System.out.print("--------------------\n"
                             + "Crear Usuario\n"
                             + "Ingrese su id: ");
@@ -70,11 +68,50 @@ public class Lab3_MiguelRojasDanielMorales {
                     System.out.println();
                     //Agregar a lista de clientes
                     lista_clientes.add(new Cliente(cantidad_dinero, id, usuario, password, correo, nombre_completo, fecha_nacimiento));
-                    
+                    lista_usuarios.add(usuario);
                     System.out.println("Se creo la cuenta exitosamente!!\n");
                     break;
-                case 2:
-                    break;
+
+                }
+                case 2: {
+                    boolean authSUDO = false;
+                    boolean authCLI = false;
+                    System.out.println("Ingrese el usuario: ");
+                    String userRecibido = input.next();
+                    System.out.println("Ingrese la password: ");
+                    String passRecibida = input.next();
+                    if (userRecibido.equalsIgnoreCase("SUDO")) {
+                        if (passRecibida.equalsIgnoreCase("sudo")) {
+                            authSUDO = true;
+                            System.out.println("Usuario autenticado. ");
+                        } else {
+                            System.out.println("Password incorrecta. ");
+                        }
+                    } else if (lista_usuarios.contains(userRecibido)) {
+                        int indUserRecibido = 0;
+                        for (int i = 0; i < lista_clientes.size(); i++) {
+                            if (((Cliente) lista_clientes.get(i)).getUsuario().equals(userRecibido)) {
+                                indUserRecibido = i;
+                            }
+                        }
+                        if (((Cliente) lista_clientes.get(indUserRecibido)).getPassword().equals(passRecibida)) {
+                            System.out.println("Usuario autenticado.");
+                            authCLI = true;
+                        }
+                    } else {
+                        System.out.println("Usuario incorrecto. ");
+                    }
+
+                    char opResp = 's';
+                    while (opResp == 's' || opResp == 'S') {
+                        if (authCLI) {
+                            //Logica para uso del cliente.
+                        } else if (authSUDO) {
+                            //Logica para uso del administrador.
+                        }
+                    }
+                }
+                break;
                 case 3:
                     resp = 'n';
                     break;
@@ -83,23 +120,9 @@ public class Lab3_MiguelRojasDanielMorales {
             }
         }
     }
-    
-    public static void login(){
-        boolean authSUDO = false;
-        System.out.println("Ingrese el usuario: ");
-        String userRecibido = input.next();
-        System.out.println("Ingrese la password: ");
-        String passRecibida = input.next();
-        if (userRecibido.equalsIgnoreCase("SUDO")) {
-            if (passRecibida.equalsIgnoreCase("sudo")) {
-                authSUDO = true;
-                System.out.println("Usuario autenticado. ");
-            } else {
-                System.out.println("Password incorrecta. ");
-            }
-        } else {
-            System.out.println("Usuario incorrecto. ");
-        } 
+
+    public static void login() {
+
     }
 
 }
