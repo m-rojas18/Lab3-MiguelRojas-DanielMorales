@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Locales {
     
     private String nombre;
-    private ArrayList <Empleado>empleados = new ArrayList();
-    private ArrayList <Producto>productos = new ArrayList();
+    private ArrayList empleados;
+    private ArrayList productos;
     private String gerente;
     
 

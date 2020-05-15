@@ -18,12 +18,6 @@ public class Lab3_MiguelRojasDanielMorales {
         ArrayList<Empleado> lista_empleados = new ArrayList();
         ArrayList<Producto> lista_productos = new ArrayList();
         ArrayList<Tiendas> lista_tiendas = new ArrayList();
-        ArrayList<Ropa> lista_ropa = new ArrayList();
-
-        Empleado e0 = new Empleado("7:00 AM - 6:00 PM", 0, "1234456", "MRojas", "hola", "marh0018@gmail.com", "Miguel Rojas", new Date());
-        Producto p = new Producto("Holaa", "Ps4", 40000);
-        lista_empleados.add(e0);
-        lista_productos.add(p);
 
         char resp = 's';
         while (resp == 's' || resp == 'S') {
@@ -148,7 +142,7 @@ public class Lab3_MiguelRojasDanielMorales {
                         } else if (authSUDO == true) {
                             boolean flag_menuAdmin = true;
                             while (flag_menuAdmin) {
-                                System.out.print("-------------------\n"
+                                System.out.print("-------------------"
                                         + "Menu de Administrador\n"
                                         + "[1] Manejar Locales\n"
                                         + "[2] Manejar Personas\n"
@@ -205,95 +199,30 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 }
 
                                                                 if (flag_empleados == false && flag_productos == false) {
-
                                                                     System.out.print("Ingrese nombre de la tienda: ");
                                                                     String nombre_tienda = input.nextLine();
-                                                                    nombre_tienda = input.nextLine();
                                                                     input = new Scanner(System.in);
                                                                     System.out.println();
-
-                                                                    //Crear Objeto
-                                                                    Tiendas t = new Tiendas(nombre_tienda, new ArrayList(), new ArrayList(), "");
                                                                     String salida_empleados = "";
                                                                     for (int i = 0; i < lista_empleados.size(); i++) {
                                                                         Empleado e = lista_empleados.get(i);
                                                                         salida_empleados += "[" + i + "] ID:" + e.getId() + "\n"
                                                                                 + "Nombre: " + e.getNombre_completo() + "\n"
-                                                                                + "Correo: " + e.getCorreo_electronico() + "\n"
-                                                                                + "Horario de Trabajo: " + e.getHorario_trabajo() + "\n"
-                                                                                + "----------------------\n";
+                                                                                + "Correo" + e.getCorreo_electronico() + "\n"
+                                                                                + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
                                                                     }
-                                                                    System.out.print("Lista de Empleados\n"
-                                                                            + salida_empleados + "\n"
-                                                                            + "Eliga un empleado: ");
-                                                                    int op_empleado = input.nextInt();
-                                                                    input = new Scanner(System.in);
-                                                                    System.out.println();
-                                                                    //Agregar Empleado
-                                                                    t.getEmpleados().add(lista_empleados.get(op_empleado));
-                                                                    System.out.print("Se agrego el empleado exitosamente!!");
+                                                                    boolean add_empleados = true;
+                                                                    while (add_empleados) {
+                                                                        System.out.println("Lista de Empleados\n"
+                                                                                + salida_empleados + "\n"
+                                                                                + "Eliga un empleado");
+                                                                        int op_empleado = input.nextInt();
 
-                                                                    //Agregar Productos
-                                                                    System.out.print("Productos\n"
-                                                                            + "[1] Ropa\n"
-                                                                            + "[2] Juguetes\n"
-                                                                            + "Eliga producto a agregar: ");
-                                                                    int op_addProd = input.nextInt();
-                                                                    input = new Scanner(System.in);
-                                                                    System.out.println();
-                                                                    //Salida de Producto
-                                                                    if (op_addProd == 1) {
-                                                                        String salida_ropa = "";
-
-                                                                        for (int i = 0; i < lista_ropa.size(); i++) {
-                                                                            Ropa r = lista_ropa.get(i);
-                                                                            salida_ropa += "[" + i + "] " + "Nombre: " + r.getNombre() + "\n"
-                                                                                    + "Descripcion: " + r.getDescripcion() + "\n"
-                                                                                    + "Precio: " + r.getPrecio() + "lps.\n"
-                                                                                    + "Sexo: " + r.getSexo() + "\n"
-                                                                                    + "Talla: " + r.getTalla() + "\n"
-                                                                                    + "---------------------\n";
-                                                                        }
-                                                                        boolean add_Prod = true;
-                                                                        while (add_Prod) {
-                                                                            System.out.println("Lista de Ropa\n"
-                                                                                    + salida_ropa + "\n"
-                                                                                    + "Selecione ropa a agregar: ");
-                                                                            int op_ropa = input.nextInt();
-                                                                            input = new Scanner(System.in);
-                                                                            System.out.println();
-                                                                            //Agregar Objeto a lista
-                                                                            t.getLista_ropa().add(lista_ropa.get(op_ropa));
-                                                                            System.out.println("Se agrego la ropa exitosamente!!\n");
-                                                                            
-                                                                            System.out.print("Desea egregar otra prenda?\n"
-                                                                                    + "[1] Si\n"
-                                                                                    + "[2] No\n"
-                                                                                    + "Eliga una opcion: ");
-                                                                            int op_addRopa = input.nextInt();
-                                                                            input = new Scanner(System.in);
-                                                                            System.out.println();
-                                                                            if (op_addProd == 1) {
-                                                                                //do nothing
-                                                                            } else {
-                                                                                add_Prod = false;
-                                                                            }
-                                                                        }
-                                                                        String salida_contratados = "";
-                                                                        for (int i = 0; i < t.getEmpleados().size(); i++) {
-                                                                            Empleado e1 = (Empleado) t.getEmpleados().get(i);
-                                                                            salida_contratados += "[" + i + "] ID:" + e1.getId() + "\n"
-                                                                                + "Nombre: " + e1.getNombre_completo() + "\n"
-                                                                                + "Correo: " + e1.getCorreo_electronico() + "\n"
-                                                                                + "Horario de Trabajo: " + e1.getHorario_trabajo() + "\n"
-                                                                                + "----------------------\n";
-                                                                        }
-                                                                        System.out.println("Lista de Empleados contratados\n"
-                                                                                + salida_contratados + "\n"
-                                                                                + "Eliga empleado a ser gerente: ");
-
-                                                                    } else {
-                                                                        String salida_jug = "";
+                                                                        input = new Scanner(System.in);
+                                                                        System.out.print("Desea agregar otro empleados?\n"
+                                                                                + "[1] Si\n"
+                                                                                + "[2] No\n"
+                                                                                + "Eliga una opcion: ");
 
                                                                     }
 
@@ -494,10 +423,85 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         System.out.println();
                                                         switch (op_producto) {
                                                             case 1:
+                                                                System.out.println("Ingrese el nombre: ");
+                                                                String nombreRopa = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese una descripcion de la prenda: ");
+                                                                String descripRopa = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese el precio de la prenda: ");
+                                                                int precioRopa = input.nextInt();
+                                                                System.out.println("Ingrese si es de hombre o mujer: 1. Hombre 2. Mujer");
+                                                                int ropaSexoResp = input.nextInt();
+                                                                String sexo = "";
+                                                                switch (ropaSexoResp) {
+                                                                    case 1:
+                                                                        sexo = "Hombre";
+                                                                        break;
+                                                                    case 2:
+                                                                        sexo = "Mujer";
+                                                                        break;
+                                                                }
+                                                                System.out.println("Ingrese la talla: 1. S 2. M 3. L 4. XL");
+                                                                int ropaTallaResp = input.nextInt();
+                                                                String talla = "";
+                                                                switch (ropaTallaResp) {
+                                                                    case 1:
+                                                                        talla = "S";
+                                                                        break;
+                                                                    case 2:
+                                                                        talla = "M";
+                                                                        break;
+                                                                    case 3:
+                                                                        talla = "L";
+                                                                        break;
+                                                                    case 4:
+                                                                        talla = "XL";
+                                                                        break;
+
+                                                                }
+                                                                Ropa r = new Ropa(sexo, talla, descripRopa, nombreRopa, precioRopa);
+                                                                lista_productos.add(r);
                                                                 break;
                                                             case 2:
+                                                                System.out.println("Ingrese el nombre del juguete: ");
+                                                                String nombreJuguete = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese una descripcion del juguete: ");
+                                                                String descripJuguete = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese el precio del juguete: ");
+                                                                int precioJuguete = input.nextInt();
+                                                                Juguetes j = new Juguetes(descripJuguete, nombreJuguete, precioJuguete);
+                                                                lista_productos.add(j);
                                                                 break;
                                                             case 3:
+                                                                System.out.println("Ingrese el nombre: ");
+                                                                String nombreComida = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese la descripcion: ");
+                                                                String descComida = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese el precio: ");
+                                                                int precioComida = input.nextInt();
+                                                                System.out.println("Ingrese que tipo de comida desea crear: 1. Bebida 2. Comida");
+                                                                int comidaOp = input.nextInt();
+                                                                String comidaTipo = "";
+                                                                switch (comidaOp) {
+                                                                    case 1:
+                                                                        comidaTipo = "Bebida";
+                                                                        break;
+                                                                    case 2:
+                                                                        comidaTipo = "Comida";
+                                                                        break;
+                                                                }
+                                                                System.out.println("Ingrese la fecha de caducidad de la comida o bebida: (dd/MM/yyyy)");
+                                                                String fechaCaducidadRAW = input.next();
+                                                                SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
+                                                                Date fechaCaducidad = sd.parse(fechaCaducidadRAW);
+                                                                
+                                                                Comida c = new Comida(comidaTipo, fechaCaducidad, descComida, nombreComida, precioComida);
+                                                                lista_productos.add(c);
                                                                 break;
                                                             case 4:
                                                                 flag_crearProd = false;
