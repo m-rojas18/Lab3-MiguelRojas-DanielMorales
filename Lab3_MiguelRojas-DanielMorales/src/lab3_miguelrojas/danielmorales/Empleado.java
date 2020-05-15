@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Empleado extends Persona{
 
-    private int horario_trabajo;
+    private String horario_trabajo;
     private int numero_productos;
     
     
@@ -12,17 +12,17 @@ public class Empleado extends Persona{
         super();
     }
 
-    public Empleado(int horario_trabajo, int numero_productos, String id, String usuario, String password, String correo_electronico, String nombre_completo, Date fecha_nacimiento) {
+    public Empleado(String horario_trabajo, int numero_productos, String id, String usuario, String password, String correo_electronico, String nombre_completo, Date fecha_nacimiento) {
         super(id, usuario, password, correo_electronico, nombre_completo, fecha_nacimiento);
         this.horario_trabajo = horario_trabajo;
         this.numero_productos = numero_productos;
     }
 
-    public int getHorario_trabajo() {
+    public String getHorario_trabajo() {
         return horario_trabajo;
     }
 
-    public void setHorario_trabajo(int horario_trabajo) {
+    public void setHorario_trabajo(String horario_trabajo) {
         this.horario_trabajo = horario_trabajo;
     }
 
