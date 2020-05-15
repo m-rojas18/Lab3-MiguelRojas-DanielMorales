@@ -130,7 +130,8 @@ public class Lab3_MiguelRojasDanielMorales {
                                         + "[1] Manejar Locales\n"
                                         + "[2] Manejar Personas\n"
                                         + "[3] Manejar Productos\n"
-                                        + "[4] Salir\n"
+                                        + "[4] Ver Factorizacion\n"
+                                        + "[5] Salir\n"
                                         + "Seleccione una opcion: ");
                                 int op_menu1 = input.nextInt();
                                 System.out.println();
@@ -148,10 +149,95 @@ public class Lab3_MiguelRojasDanielMorales {
                                             System.out.println();
                                             switch (op_menuLocal) {
                                                 case 1:
+                                                    //Menu Crear Locales
+                                                    boolean flag_crearLocal = true;
+                                                    while (flag_crearLocal) {
+                                                        System.out.print("--------------------\n"
+                                                                + "Crear Local\n"
+                                                                + "[1] Tienda\n"
+                                                                + "[2] Quiosco\n"
+                                                                + "[3] Bar\n"
+                                                                + "[4] Salir\n"
+                                                                + "Eliga una opcion: ");
+                                                        int op_crearLocal = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_crearLocal) {
+                                                            case 1:
+                                                                System.out.print("--------------------\n"
+                                                                        + "Crear Tienda\n"
+                                                                        + "Ingrese nombre de tienda: ");
+                                                                String nombre_tienda = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                System.out.print("");
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                break;
+                                                            case 4:
+                                                                flag_crearLocal = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
                                                     break;
                                                 case 2:
+                                                    //Menu Modificar Locales
+                                                    boolean flag_modLocal = true;
+                                                    while (flag_modLocal) {
+                                                        System.out.print("--------------------\n"
+                                                                + "Modificar Local\n"
+                                                                + "[1] Tienda\n"
+                                                                + "[2] Quiosco\n"
+                                                                + "[3] Bar\n"
+                                                                + "[4] Salir\n"
+                                                                + "Eliga una opcion: ");
+                                                        int op_modLocal = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_modLocal) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                break;
+                                                            case 4:
+                                                                flag_modLocal = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
                                                     break;
                                                 case 3:
+                                                    //Menu Eliminar Locales
+                                                    boolean flag_elimLocal = true;
+                                                    while (flag_elimLocal) {
+                                                        System.out.print("--------------------\n"
+                                                                + "Eliminar Local\n"
+                                                                + "[1] Tienda\n"
+                                                                + "[2] Quiosco\n"
+                                                                + "[3] Bar\n"
+                                                                + "[4] Salir\n"
+                                                                + "Eliga una opcion: ");
+                                                        int op_elimLocal = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_elimLocal) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                break;
+                                                            case 4:
+                                                                flag_elimLocal = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
                                                     break;
                                                 case 4:
                                                     flag_menuLocal = false;
@@ -162,16 +248,206 @@ public class Lab3_MiguelRojasDanielMorales {
                                         }
                                         break;
                                     case 2:
-                                        System.out.print("--------------------\n"
-                                                + "[1] Crear Persona\n"
-                                                + "[2] Modificar Persona\n"
-                                                + "[3] Eliminar Persona\n"
-                                                + "[4] Salir\n"
-                                                + "Eliga una opcion: ");
+                                        boolean flag_menuPersona = true;
+                                        while (flag_menuPersona) {
+                                            System.out.print("--------------------\n"
+                                                    + "[1] Crear Persona\n"
+                                                    + "[2] Modificar Persona\n"
+                                                    + "[3] Eliminar Persona\n"
+                                                    + "[4] Salir\n"
+                                                    + "Eliga una opcion: ");
+                                            int op_menuPersonas = input.nextInt();
+                                            System.out.println();
+                                            switch (op_menuPersonas) {
+                                                case 1:
+                                                    boolean flag_crearPersona = true;
+                                                    while (flag_crearPersona) {
+                                                        System.out.print("-------------------\n"
+                                                                + "Crear Persona\n"
+                                                                + "[1] Cliente\n"
+                                                                + "[2] Empleado\n"
+                                                                + "[3] Salir\n"
+                                                                + "Eliga persona a crear: ");
+                                                        int op_crearPer = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_crearPer) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                flag_crearPersona = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
+                                                    break;
+                                                case 2:
+                                                    boolean flag_modPer = true;
+                                                    while (flag_modPer) {
+                                                        System.out.print("-------------------\n"
+                                                                + "Modificar Persona\n"
+                                                                + "[1] Cliente\n"
+                                                                + "[2] Empleado\n"
+                                                                + "[3] Salir\n"
+                                                                + "Eliga persona a modificar: ");
+                                                        int op_modPer = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_modPer) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                flag_modPer = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
+
+                                                    break;
+                                                case 3:
+                                                    boolean flag_elimPer = true;
+                                                    while (flag_elimPer) {
+                                                        System.out.print("-------------------\n"
+                                                                + "Eliminar Persona\n"
+                                                                + "[1] Cliente\n"
+                                                                + "[2] Empleado\n"
+                                                                + "[3] Salir\n"
+                                                                + "Eliga persona a eliminar: ");
+                                                        int op_elimPer = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_elimPer) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                flag_elimPer = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
+                                                    break;
+                                                case 4:
+                                                    flag_menuPersona = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("Ingrese una opcion valida.\n");
+                                            }
+                                        }
                                         break;
                                     case 3:
+                                        boolean flag_menuProd = true;
+                                        while (flag_menuProd) {
+                                            System.out.print("--------------------\n"
+                                                    + "[1] Crear Producto\n"
+                                                    + "[2] Modificar Producto\n"
+                                                    + "[3] Eliminar Producto\n"
+                                                    + "[4] Salir"
+                                                    + "Eliga una opcion: ");
+                                            int op_menuProd = input.nextInt();
+                                            System.out.println();
+                                            switch (op_menuProd) {
+                                                case 1:
+                                                    boolean flag_crearProd = true;
+                                                    while (flag_crearProd) {
+                                                        System.out.print("--------------------\n"
+                                                                + "Crear Producto\n"
+                                                                + "[1] Ropa\n"
+                                                                + "[2] Juguete\n"
+                                                                + "[3] Comida\n"
+                                                                + "[4] Salir\n"
+                                                                + "Eliga producto a crear: ");
+                                                        int op_producto = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_producto) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                break;
+                                                            case 4:
+                                                                flag_crearProd = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
+
+                                                    break;
+                                                case 2:
+                                                    boolean flag_modProd = true;
+                                                    while (flag_modProd) {
+                                                        System.out.print("--------------------\n"
+                                                                + "Modificar Producto\n"
+                                                                + "[1] Ropa\n"
+                                                                + "[2] Juguete\n"
+                                                                + "[3] Comida\n"
+                                                                + "[4] Salir\n"
+                                                                + "Eliga producto a modificar: ");
+                                                        int op_productoMod = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_productoMod) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                break;
+                                                            case 4:
+                                                                flag_modProd = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
+
+                                                    break;
+                                                case 3:
+                                                    boolean flag_elimProd = true;
+                                                    while (flag_elimProd) {
+                                                        System.out.print("--------------------\n"
+                                                                + "Eliminar Producto\n"
+                                                                + "[1] Ropa\n"
+                                                                + "[2] Juguete\n"
+                                                                + "[3] Comida\n"
+                                                                + "[4] Salir\n"
+                                                                + "Eliga producto a eliminar: ");
+                                                        int op_productoElim = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_productoElim) {
+                                                            case 1:
+                                                                break;
+                                                            case 2:
+                                                                break;
+                                                            case 3:
+                                                                break;
+                                                            case 4:
+                                                                flag_elimProd = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcin valida.\n");
+                                                        }
+                                                    }
+                                                    break;
+                                                case 4:
+                                                    flag_menuProd = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("Ingrese una opcion valida.\n");
+                                            }
+                                        }
+
                                         break;
                                     case 4:
+                                        System.out.println("Factorizacion");
+                                        break;
+                                    case 5:
                                         flag_menuAdmin = false;
                                         break;
                                     default:
