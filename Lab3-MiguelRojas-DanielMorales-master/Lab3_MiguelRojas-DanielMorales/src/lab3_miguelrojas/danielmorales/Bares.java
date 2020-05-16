@@ -10,35 +10,13 @@ import java.util.ArrayList;
  *
  * @author danie
  */
-public class Bares {
+public class Bares extends Locales{
 
-    private ArrayList empleados;
-    private ArrayList productos;
-    public Bares(ArrayList empleados, ArrayList productos) {
-        this.empleados  = empleados;
-        this.productos = productos;
+    public Bares(String nombre, ArrayList empleados, ArrayList productos, String gerente) {
+        super(nombre, empleados, productos, gerente);
     }
 
-    public ArrayList getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(ArrayList empleados) {
-        this.empleados = empleados;
-    }
-
-    public ArrayList getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList productos) {
-        this.productos = productos;
-    }
-
-    @Override
-    public String toString() {
-        return "Bares{" + "empleados=" + empleados + ", productos=" + productos + '}';
-    }
+    
     
     
 }

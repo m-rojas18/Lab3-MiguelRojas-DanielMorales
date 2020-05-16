@@ -11,36 +11,12 @@ import java.util.ArrayList;
  *
  * @author danie
  */
-public class Quiosco {
+public class Quiosco extends Locales{
 
-    private String nombre;
-    private ArrayList productos;
-
-    public Quiosco(String nombre, ArrayList productos) {
-        this.nombre = nombre;
-        this.productos = productos;
+    public Quiosco(String nombre, ArrayList empleados, ArrayList productos, String gerente) {
+        super(nombre, empleados, productos, gerente);
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public ArrayList getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList productos) {
-        this.productos = productos;
-    }
-
-    @Override
-    public String toString() {
-        return "Quiosco{" + "nombre=" + nombre + ", productos=" + productos + '}';
-    }
 
     
 }

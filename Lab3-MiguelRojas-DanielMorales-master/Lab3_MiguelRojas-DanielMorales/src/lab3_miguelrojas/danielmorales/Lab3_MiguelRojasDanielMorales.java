@@ -14,6 +14,8 @@ public class Lab3_MiguelRojasDanielMorales {
     static ArrayList<Ropa> lista_ropa = new ArrayList();
     static ArrayList<Comida> lista_comidas = new ArrayList();
     static ArrayList<Juguetes> lista_juguetes = new ArrayList();
+    static ArrayList<Quiosco> lista_quioscos = new ArrayList();
+    static ArrayList<Bares> lista_bares = new ArrayList();
 
     public static void main(String[] args) throws ParseException {
 
@@ -145,7 +147,7 @@ public class Lab3_MiguelRojasDanielMorales {
                         } else if (authSUDO == true) {
                             boolean flag_menuAdmin = true;
                             while (flag_menuAdmin) {
-                                System.out.print("-------------------"
+                                System.out.print("-------------------\n"
                                         + "Menu de Administrador\n"
                                         + "[1] Manejar Locales\n"
                                         + "[2] Manejar Personas\n"
@@ -286,10 +288,67 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         System.out.println();
                                                         switch (op_elimLocal) {
                                                             case 1:
+                                                                if (lista_tiendas.isEmpty()) {
+                                                                    System.out.println("No existe ninguna tienda.\n");
+                                                                } else {
+
+                                                                    String salida_elimTienda = "";
+                                                                    for (int i = 0; i < lista_tiendas.size(); i++) {
+                                                                        Tiendas ts = lista_tiendas.get(i);
+                                                                        salida_elimTienda += "[" + i + "] Nombre: " + ts.getNombre() + "\n";
+                                                                    }
+
+                                                                    System.out.print("Lista de Tiendas\n"
+                                                                            + salida_elimTienda + "\n"
+                                                                            + "Eliga tienda a eliminar: ");
+                                                                    int elim_tienda = input.nextInt();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    lista_tiendas.remove(elim_tienda);
+                                                                    System.out.println("Se elimino el local exitosamente!!\n");
+                                                                }
                                                                 break;
                                                             case 2:
+                                                                if (lista_quioscos.isEmpty()) {
+                                                                    System.out.println("No existe ningun quiosco.\n");
+                                                                } else {
+                                                                    String salida_elimquioscos = "";
+                                                                    for (int i = 0; i < lista_quioscos.size(); i++) {
+                                                                        Quiosco q = lista_quioscos.get(i);
+                                                                        salida_elimquioscos += "[" + i + "] Nombre: " + q.getNombre() + "\n";
+                                                                    }
+
+                                                                    System.out.print("Lista de Quioscos\n"
+                                                                            + salida_elimquioscos + "\n"
+                                                                            + "Eliga quiosco a eliminar: ");
+                                                                    int elim_quiosco = input.nextInt();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    lista_quioscos.remove(elim_quiosco);
+
+                                                                    System.out.println("Se elimino el local exitosamente!!\n");
+                                                                }
                                                                 break;
                                                             case 3:
+                                                                if (lista_bares.isEmpty()) {
+                                                                    System.out.println("No existe ningun bar.\n");
+                                                                } else {
+
+                                                                    String salida_elimBar = "";
+                                                                    for (int i = 0; i < lista_bares.size(); i++) {
+                                                                        Bares b = lista_bares.get(i);
+                                                                        salida_elimBar += "[" + i + "] Nombre: " + b.getNombre() + "\n";
+                                                                    }
+
+                                                                    System.out.print("Lista de Bares\n"
+                                                                            + salida_elimBar + "\n"
+                                                                            + "Eliga quiosco a eliminar: ");
+                                                                    int elim_bar = input.nextInt();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    lista_bares.remove(elim_bar);
+                                                                    System.out.println("Se elimino el local exitosamente!!\n");
+                                                                }
                                                                 break;
                                                             case 4:
                                                                 flag_elimLocal = false;

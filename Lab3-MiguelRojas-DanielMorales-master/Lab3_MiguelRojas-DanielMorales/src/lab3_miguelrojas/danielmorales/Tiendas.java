@@ -10,26 +10,13 @@ import java.util.ArrayList;
  *
  * @author danie
  */
-public class Tiendas {
+public class Tiendas extends Locales{
 
-    private ArrayList productos;
-    
-    public Tiendas(ArrayList productos) {
-        this.productos = productos;
+    public Tiendas(String nombre, ArrayList empleados, ArrayList productos, String gerente) {
+        super(nombre, empleados, productos, gerente);
     }
 
-    public ArrayList getProductos() {
-        return productos;
-    }
 
-    public void setProductos(ArrayList productos) {
-        this.productos = productos;
-    }
-
-    @Override
-    public String toString() {
-        return "Tiendas{" + "productos=" + productos + '}';
-    }
     
     
     
