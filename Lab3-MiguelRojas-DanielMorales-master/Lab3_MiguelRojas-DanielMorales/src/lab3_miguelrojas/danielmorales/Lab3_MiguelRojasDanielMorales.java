@@ -27,6 +27,7 @@ public class Lab3_MiguelRojasDanielMorales {
 
         char resp = 's';
         while (resp == 's' || resp == 'S') {
+            System.out.println("Usuario : SUDO y Contraseña: sudo");
             System.out.println("Bienvenido al Shopping Mall de muy muy lejos.");
             System.out.println("1. Sign in");
             System.out.println("2. Log in");
@@ -346,8 +347,12 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 if (flag_empleados == false && flag_productos == false) {
                                                                     System.out.print("Ingrese nombre de la tienda: ");
                                                                     String nombre_tienda = input.nextLine();
+                                                                    nombre_tienda = input.nextLine();
                                                                     input = new Scanner(System.in);
                                                                     System.out.println();
+
+                                                                    //Creacion de Objeto
+                                                                    Tiendas tienda = new Tiendas(nombre_tienda, new ArrayList(), new ArrayList(), "");
                                                                     String salida_empleados = "";
                                                                     for (int i = 0; i < lista_empleados.size(); i++) {
                                                                         Empleado e = lista_empleados.get(i);
@@ -357,25 +362,453 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                                 + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
                                                                     }
                                                                     boolean add_empleados = true;
+                                                                    boolean add_object = true;
                                                                     while (add_empleados) {
                                                                         System.out.println("Lista de Empleados\n"
                                                                                 + salida_empleados + "\n"
                                                                                 + "Eliga un empleado");
                                                                         int op_empleado = input.nextInt();
-
                                                                         input = new Scanner(System.in);
+
+                                                                        for (int i = 0; i < tienda.getEmpleados().size(); i++) {
+                                                                            if (!tienda.getEmpleados().contains(lista_empleados.get(op_empleado))) {
+                                                                                add_object = true;
+                                                                            } else {
+                                                                                add_object = false;
+                                                                            }
+                                                                        }
+
+                                                                        if (add_object == false) {
+                                                                            System.out.println("No se puede agregar el mismo empleado.\n");
+                                                                        } else {
+                                                                            tienda.getEmpleados().add(lista_empleados.get(op_empleado));
+                                                                            System.out.println("Se agrego el empleado exitosamente!!\n\n");
+                                                                        }
+
                                                                         System.out.print("Desea agregar otro empleados?\n"
                                                                                 + "[1] Si\n"
                                                                                 + "[2] No\n"
                                                                                 + "Eliga una opcion: ");
+                                                                        int seguir = input.nextInt();
+                                                                        if (seguir == 1) {
+                                                                            //do nothing
+                                                                        } else {
+                                                                            add_empleados = false;
+                                                                        }
+                                                                    }
+
+                                                                    //Productos
+                                                                    System.out.print("Productos\n"
+                                                                            + "[1] Ropa\n"
+                                                                            + "[2] Juguetes\n"
+                                                                            + "Eliga una opcion: ");
+                                                                    int op_addProd = input.nextInt();
+                                                                    if (op_addProd == 1) {
+                                                                        boolean flag_addProd = true;
+
+                                                                        while (flag_addProd) {
+                                                                            String salida_ropaAdd = "";
+                                                                            for (int i = 0; i < lista_ropa.size(); i++) {
+                                                                                Ropa r6 = lista_ropa.get(i);
+                                                                                salida_ropaAdd += "[" + i + "] " + "Nombre: " + r6.getNombre() + "\n"
+                                                                                        + "Descripcion: " + r6.getDescripcion() + "\n"
+                                                                                        + "Precio: " + r6.getPrecio() + "lps.\n"
+                                                                                        + "Sexo: " + r6.getSexo() + "\n"
+                                                                                        + "Talla: " + r6.getTalla() + "\n"
+                                                                                        + "---------------------\n";
+                                                                            }
+
+                                                                            System.out.print("Lista de Ropas\n"
+                                                                                    + salida_ropaAdd + "\n"
+                                                                                    + "Eliga prenda a agregar: ");
+                                                                            int op_addPrenda = input.nextInt();
+                                                                            tienda.getProductos().add(lista_productos.get(op_addPrenda));
+                                                                            System.out.println("Se agrego el producto exitosamente!!\n\n");
+                                                                            System.out.print("Desea agregar otra prenda?\n"
+                                                                                    + "[1] Si\n"
+                                                                                    + "[2] No\n"
+                                                                                    + "Eliga una opcion: ");
+                                                                            int seguir1 = input.nextInt();
+                                                                            if (seguir1 == 1) {
+                                                                                //do nothing
+                                                                            } else {
+                                                                                flag_addProd = false;
+                                                                            }
+
+                                                                        }
+
+                                                                    } else {
+                                                                        String salida_juguetesAdd = "";
+                                                                        for (int i = 0; i < lista_juguetes.size(); i++) {
+                                                                            Juguetes j = lista_juguetes.get(i);
+                                                                            salida_juguetesAdd += "[" + i + "] Nombre: " + j.getNombre() + "\n"
+                                                                                    + "Descripcion: " + j.getDescripcion() + "\n"
+                                                                                    + "Precio: " + j.getPrecio() + "\n"
+                                                                                    + "---------------------\n";
+                                                                        }
+
+                                                                        boolean seguir_AddProd = true;
+                                                                        while (seguir_AddProd) {
+                                                                            System.out.println("Lista de Juguetes\n"
+                                                                                    + salida_juguetesAdd + "\n"
+                                                                                    + "Eliga juguete a agregar: ");
+                                                                            int op_addJuguetes = input.nextInt();
+                                                                            tienda.getProductos().add(lista_juguetes.get(op_addJuguetes));
+                                                                            System.out.println("Se agrego el producto exitosamente!!\n\n");
+                                                                            System.out.print("Desea agregar otra prenda?\n"
+                                                                                    + "[1] Si\n"
+                                                                                    + "[2] No\n"
+                                                                                    + "Eliga una opcion: ");
+                                                                            int seguir2 = input.nextInt();
+                                                                            if (seguir2 == 1) {
+                                                                                //do nothing
+                                                                            } else {
+                                                                                seguir_AddProd = false;
+                                                                            }
+
+                                                                        }
 
                                                                     }
 
+                                                                    String salida_empleados2 = "";
+                                                                    for (int i = 0; i < tienda.getEmpleados().size(); i++) {
+                                                                        Empleado e = (Empleado) tienda.getEmpleados().get(i);
+                                                                        salida_empleados2 += "[" + i + "] ID:" + e.getId() + "\n"
+                                                                                + "Nombre: " + e.getNombre_completo() + "\n"
+                                                                                + "Correo" + e.getCorreo_electronico() + "\n"
+                                                                                + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
+                                                                    }
+
+                                                                    System.out.println("Lista de Empleados Contratados\n"
+                                                                            + salida_empleados2 + "\n"
+                                                                            + "Eliga empleado a se gerente: ");
+                                                                    int op_gerente = input.nextInt();
+                                                                    tienda.setGerente(((Empleado) tienda.getEmpleados().get(op_gerente)).getNombre_completo());
+
+                                                                    lista_tiendas.add(tienda);
+                                                                    System.out.println("Se agrego exitosamente la tienda!!\n");
                                                                 }
                                                                 break;
                                                             case 2:
+                                                                System.out.print("--------------------\n"
+                                                                        + "Crear Quiosco\n");
+                                                                boolean flag_empleados2 = true;
+                                                                boolean flag_productos2 = true;
+                                                                boolean flag_productos3 = true;
+                                                                if (lista_empleados.isEmpty()) {
+                                                                    System.out.println("No hay empleados disponibles.\n"
+                                                                            + "Debe Contratar empleados(Crear).\n");
+                                                                } else {
+                                                                    flag_empleados2 = false;
+                                                                }
+
+                                                                if (lista_productos.isEmpty()) {
+                                                                    System.out.print("No hay productos disponibles.\n"
+                                                                            + "Debe crear nuevos productos antes de crear una tienda.\n");
+                                                                } else {
+                                                                    flag_productos2 = false;
+                                                                }
+
+                                                                if (lista_tiendas.isEmpty()) {
+                                                                    System.out.println("Debe existir alguna tienda para crear Quiosco/\n");
+                                                                } else {
+                                                                    flag_productos3 = false;
+                                                                }
+
+                                                                if (flag_empleados2 == false && flag_productos2 == false && flag_productos3 == false) {
+                                                                    String salida_nombresTienda = "";
+                                                                    for (int i = 0; i < lista_tiendas.size(); i++) {
+                                                                        salida_nombresTienda += "[" + i + "] Nombre: " + lista_tiendas.get(i).getNombre() + "\n";
+                                                                    }
+
+                                                                    System.out.print("Lista de Tiendas\n"
+                                                                            + salida_nombresTienda + "\n"
+                                                                            + "Eliga un nombre para el quiosco: ");
+                                                                    int op_nombre = input.nextInt();
+                                                                    System.out.println();
+                                                                    Quiosco q = new Quiosco(lista_tiendas.get(op_nombre).getNombre(), new ArrayList(),
+                                                                            new ArrayList(), "");
+
+                                                                    boolean add_empleados = true;
+                                                                    boolean add_object = true;
+                                                                    String salida_empleados = "";
+                                                                    while (add_empleados) {
+                                                                        if (q.getEmpleados().size() < 4) {
+                                                                            System.out.println("Lista de Empleados\n"
+                                                                                    + salida_empleados + "\n"
+                                                                                    + "Eliga un empleado");
+                                                                            int op_empleado = input.nextInt();
+                                                                            input = new Scanner(System.in);
+
+                                                                            for (int i = 0; i < q.getEmpleados().size(); i++) {
+                                                                                if (!q.getEmpleados().contains(lista_empleados.get(op_empleado))) {
+                                                                                    add_object = true;
+                                                                                } else {
+                                                                                    add_object = false;
+                                                                                }
+                                                                            }
+
+                                                                            if (add_object == false) {
+                                                                                System.out.println("No se puede agregar el mismo empleado.\n");
+                                                                            } else {
+                                                                                q.getEmpleados().add(lista_empleados.get(op_empleado));
+                                                                                System.out.println("Se agrego el empleado exitosamente!!\n\n");
+                                                                            }
+
+                                                                            System.out.print("Desea agregar otro empleados?\n"
+                                                                                    + "[1] Si\n"
+                                                                                    + "[2] No\n"
+                                                                                    + "Eliga una opcion: ");
+                                                                            int seguir = input.nextInt();
+                                                                            System.out.println();
+                                                                            if (seguir == 1) {
+                                                                                //do nothing
+                                                                            } else {
+                                                                                add_empleados = false;
+                                                                            }
+                                                                        } else {
+                                                                            add_empleados = false;
+                                                                            System.out.println("Ya no puede agregar mas empleados");
+                                                                        }
+
+                                                                    }
+                                                                    //Agregar Ropa
+                                                                    boolean flag_addProd = true;
+
+                                                                    while (flag_addProd) {
+                                                                        String salida_ropaAdd = "";
+                                                                        for (int i = 0; i < lista_ropa.size(); i++) {
+                                                                            Ropa r6 = lista_ropa.get(i);
+                                                                            salida_ropaAdd += "[" + i + "] " + "Nombre: " + r6.getNombre() + "\n"
+                                                                                    + "Descripcion: " + r6.getDescripcion() + "\n"
+                                                                                    + "Precio: " + r6.getPrecio() + "lps.\n"
+                                                                                    + "Sexo: " + r6.getSexo() + "\n"
+                                                                                    + "Talla: " + r6.getTalla() + "\n"
+                                                                                    + "---------------------\n";
+                                                                        }
+
+                                                                        System.out.print("Lista de Ropas\n"
+                                                                                + salida_ropaAdd + "\n"
+                                                                                + "Eliga prenda a agregar: ");
+                                                                        int op_addPrenda = input.nextInt();
+                                                                        q.getProductos().add(lista_productos.get(op_addPrenda));
+                                                                        System.out.println("Se agrego el producto exitosamente!!\n\n");
+                                                                        System.out.print("Desea agregar otra prenda?\n"
+                                                                                + "[1] Si\n"
+                                                                                + "[2] No\n"
+                                                                                + "Eliga una opcion: ");
+                                                                        int seguir1 = input.nextInt();
+                                                                        if (seguir1 == 1) {
+                                                                            //do nothing
+                                                                        } else {
+                                                                            flag_addProd = false;
+                                                                        }
+
+                                                                    }
+                                                                    //Producto Comida
+                                                                    String salida_comidas = "";
+                                                                    boolean flag_addComida = true;
+                                                                    while (flag_addComida) {
+                                                                        for (int i = 0; i < lista_comidas.size(); i++) {
+                                                                            Comida c0 = lista_comidas.get(i);
+                                                                            salida_comidas += "[" + i + "] Nombre: " + c0.getNombre() + "\n"
+                                                                                    + "Descripcion: " + c0.getDescripcion() + "\n"
+                                                                                    + "Precio: " + c0.getPrecio() + "\n"
+                                                                                    + "Tipo: " + c0.getTipo() + "\n"
+                                                                                    + "Fecha de Caducidad" + c0.getFecha_caducidad() + "\n"
+                                                                                    + "---------------------\n";
+                                                                        }
+
+                                                                        System.out.print("Lista de Comidas\n"
+                                                                                + salida_comidas + "\n"
+                                                                                + "Eliga comida a agregar: ");
+                                                                        int op_AddComida = input.nextInt();
+                                                                        System.out.println();
+                                                                        q.getProductos().add(op_AddComida);
+
+                                                                        System.out.println("Se agego el producto exitosamente!!\n");
+                                                                        System.out.print("Desea agregar otra comida?\n"
+                                                                                + "[1] Si\n"
+                                                                                + "[2] No\n"
+                                                                                + "Eliga una opcion: ");
+                                                                        int seguir3 = input.nextInt();
+                                                                        if (seguir3 == 1) {
+                                                                            //do nothing
+                                                                        } else {
+                                                                            flag_addComida = false;
+                                                                        }
+
+                                                                    }
+                                                                    //Agregar Juguete
+                                                                    String salida_juguetesAdd = "";
+                                                                    for (int i = 0; i < lista_juguetes.size(); i++) {
+                                                                        Juguetes j = lista_juguetes.get(i);
+                                                                        salida_juguetesAdd += "[" + i + "] Nombre: " + j.getNombre() + "\n"
+                                                                                + "Descripcion: " + j.getDescripcion() + "\n"
+                                                                                + "Precio: " + j.getPrecio() + "\n"
+                                                                                + "---------------------\n";
+                                                                    }
+
+                                                                    boolean seguir_AddProd = true;
+                                                                    while (seguir_AddProd) {
+                                                                        System.out.println("Lista de Juguetes\n"
+                                                                                + salida_juguetesAdd + "\n"
+                                                                                + "Eliga juguete a agregar: ");
+                                                                        int op_addJuguetes = input.nextInt();
+                                                                        q.getProductos().add(lista_juguetes.get(op_addJuguetes));
+                                                                        System.out.println("Se agrego el producto exitosamente!!\n\n");
+                                                                        System.out.print("Desea agregar otra prenda?\n"
+                                                                                + "[1] Si\n"
+                                                                                + "[2] No\n"
+                                                                                + "Eliga una opcion: ");
+                                                                        int seguir2 = input.nextInt();
+                                                                        if (seguir2 == 1) {
+                                                                            //do nothing
+                                                                        } else {
+                                                                            seguir_AddProd = false;
+                                                                        }
+
+                                                                    }
+
+                                                                    //Gerente
+                                                                    String salida_empleados2 = "";
+                                                                    for (int i = 0; i < q.getEmpleados().size(); i++) {
+                                                                        Empleado e = (Empleado) q.getEmpleados().get(i);
+                                                                        salida_empleados2 += "[" + i + "] ID:" + e.getId() + "\n"
+                                                                                + "Nombre: " + e.getNombre_completo() + "\n"
+                                                                                + "Correo" + e.getCorreo_electronico() + "\n"
+                                                                                + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
+                                                                    }
+
+                                                                    System.out.println("Lista de Empleados Contratados\n"
+                                                                            + salida_empleados2 + "\n"
+                                                                            + "Eliga empleado a se gerente: ");
+                                                                    int op_gerente = input.nextInt();
+                                                                    q.setGerente(((Empleado) q.getEmpleados().get(op_gerente)).getNombre_completo());
+
+                                                                    lista_quioscos.add(q);
+                                                                    System.out.println("Se agrego exitosamente el quiosco!!\n");
+
+                                                                }
                                                                 break;
                                                             case 3:
+                                                                System.out.print("--------------------\n"
+                                                                        + "Crear Bar\n");
+                                                                boolean flag_empleados3 = true;
+                                                                boolean flag_productos4 = true;
+
+                                                                if (flag_empleados3 == false && flag_productos4 == false) {
+                                                                    System.out.print("Ingrese nombre del bar: ");
+                                                                    String nombre_tienda = input.nextLine();
+                                                                    nombre_tienda = input.nextLine();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+
+                                                                    //Creacion de Objeto
+                                                                    Bares bar = new Bares(nombre_tienda, new ArrayList(), new ArrayList(), "");
+                                                                    String salida_empleados = "";
+                                                                    for (int i = 0; i < lista_empleados.size(); i++) {
+                                                                        Empleado e = lista_empleados.get(i);
+                                                                        salida_empleados += "[" + i + "] ID:" + e.getId() + "\n"
+                                                                                + "Nombre: " + e.getNombre_completo() + "\n"
+                                                                                + "Correo" + e.getCorreo_electronico() + "\n"
+                                                                                + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
+                                                                    }
+                                                                    boolean add_empleados = true;
+                                                                    boolean add_object = true;
+                                                                    while (add_empleados) {
+                                                                        if (bar.getEmpleados().size() < 4) {
+                                                                            System.out.println("Lista de Empleados\n"
+                                                                                    + salida_empleados + "\n"
+                                                                                    + "Eliga un empleado");
+                                                                            int op_empleado = input.nextInt();
+                                                                            input = new Scanner(System.in);
+
+                                                                            for (int i = 0; i < bar.getEmpleados().size(); i++) {
+                                                                                if (!bar.getEmpleados().contains(lista_empleados.get(op_empleado))) {
+                                                                                    add_object = true;
+                                                                                } else {
+                                                                                    add_object = false;
+                                                                                }
+                                                                            }
+
+                                                                            if (add_object == false) {
+                                                                                System.out.println("No se puede agregar el mismo empleado.\n");
+                                                                            } else {
+                                                                                bar.getEmpleados().add(lista_empleados.get(op_empleado));
+                                                                                System.out.println("Se agrego el empleado exitosamente!!\n\n");
+                                                                            }
+
+                                                                            System.out.print("Desea agregar otro empleados?\n"
+                                                                                    + "[1] Si\n"
+                                                                                    + "[2] No\n"
+                                                                                    + "Eliga una opcion: ");
+                                                                            int seguir = input.nextInt();
+                                                                            System.out.println();
+                                                                            if (seguir == 1) {
+                                                                                //do nothing
+                                                                            } else {
+                                                                                add_empleados = false;
+                                                                            }
+                                                                        } else {
+                                                                            add_empleados = false;
+                                                                            System.out.println("Ya no puede agregar mas empleados");
+                                                                        }
+
+                                                                    }
+
+                                                                    //Productos
+                                                                    String salida_comidas = "";
+                                                                    boolean flag_addComida = true;
+                                                                    while (flag_addComida) {
+                                                                        for (int i = 0; i < lista_comidas.size(); i++) {
+                                                                            Comida c0 = lista_comidas.get(i);
+                                                                            salida_comidas += "[" + i + "] Nombre: " + c0.getNombre() + "\n"
+                                                                                    + "Descripcion: " + c0.getDescripcion() + "\n"
+                                                                                    + "Precio: " + c0.getPrecio() + "\n"
+                                                                                    + "Tipo: " + c0.getTipo() + "\n"
+                                                                                    + "Fecha de Caducidad" + c0.getFecha_caducidad() + "\n"
+                                                                                    + "---------------------\n";
+                                                                        }
+
+                                                                        System.out.print("Lista de Comidas\n"
+                                                                                + salida_comidas + "\n"
+                                                                                + "Eliga comida a agregar: ");
+                                                                        int op_AddComida = input.nextInt();
+                                                                        System.out.println();
+                                                                        bar.getProductos().add(op_AddComida);
+
+                                                                        System.out.println("Se agego el producto exitosamente!!\n");
+                                                                        System.out.print("Desea agregar otra comida?\n"
+                                                                                + "[1] Si\n"
+                                                                                + "[2] No\n"
+                                                                                + "Eliga una opcion: ");
+                                                                        int seguir3 = input.nextInt();
+                                                                        if (seguir3 == 1) {
+                                                                            //do nothing
+                                                                        } else {
+                                                                            flag_addComida = false;
+                                                                        }
+
+                                                                    }
+
+                                                                    String salida_empleados2 = "";
+                                                                    for (int i = 0; i < bar.getEmpleados().size(); i++) {
+                                                                        Empleado e = (Empleado) bar.getEmpleados().get(i);
+                                                                        salida_empleados2 += "[" + i + "] ID:" + e.getId() + "\n"
+                                                                                + "Nombre: " + e.getNombre_completo() + "\n"
+                                                                                + "Correo" + e.getCorreo_electronico() + "\n"
+                                                                                + "Horario de Trabajo" + e.getHorario_trabajo() + "\n";
+                                                                    }
+                                                                    System.out.println("Lista de Empleados Contratados\n"
+                                                                            + salida_empleados2 + "\n"
+                                                                            + "Eliga empleado a ser gerente: ");
+                                                                    int op_gerente = input.nextInt();
+                                                                    bar.setGerente(((Empleado) bar.getEmpleados().get(op_gerente)).getNombre_completo());
+                                                                    lista_bares.add(bar);
+                                                                    System.out.println("Se agrego exitosamente el bar!\n");
+
+                                                                }
                                                                 break;
                                                             case 4:
                                                                 flag_crearLocal = false;
@@ -400,10 +833,13 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         System.out.println();
                                                         switch (op_modLocal) {
                                                             case 1:
+                                                                System.out.println("No nos dio tiempo. :(\n");
                                                                 break;
                                                             case 2:
+                                                                System.out.println("No nos dio tiempo. :(\n");
                                                                 break;
                                                             case 3:
+                                                                System.out.println("No nos dio tiempo. :(\n");
                                                                 break;
                                                             case 4:
                                                                 flag_modLocal = false;
@@ -688,11 +1124,37 @@ public class Lab3_MiguelRojasDanielMorales {
                                                             case 1:
                                                                 //muestra
                                                                 System.out.println("Que cliente desea modificar? ");
+                                                                String salida_ModCliente = "";
+                                                                for (int i = 0; i < lista_clientes.size(); i++) {
+                                                                    Cliente modCLi2 = lista_clientes.get(i);
+                                                                    salida_ModCliente +=  "[" + i + "] " + "ID: " + modCLi2.getId() + "\n"
+                                                                                + "Usuario: " + modCLi2.getUsuario() + "\n"
+                                                                                + "Password: " + modCLi2.getPassword() + "\n"
+                                                                                + "Correo: " + modCLi2.getCorreo_electronico() + "\n"
+                                                                                + "Nombre: " + modCLi2.getNombre_completo() + "\n"
+                                                                                + "Fecha: " + modCLi2.getFecha_nacimiento() + "\n"
+                                                                                + "Cantidad de dinero: " + modCLi2.getCantidad_dinero() + "LPS \n"
+                                                                                + "---------------------\n";
+                                                                }
+                                                                
+                                                                System.out.println("Lista de Clientes\n"
+                                                                        + salida_ModCliente + "\n"
+                                                                        + "Eliga cliente: ");
                                                                 int opCliente = input.nextInt();
                                                                 Cliente mod_c = lista_clientes.get(opCliente);
                                                                 boolean opModC = true;
                                                                 while (opModC) {
-                                                                    System.out.println("Ingrese que desea modificar del empleado: \n"
+                                                                    
+                                                                    System.out.println("Cliente Modificando: \n"
+                                                                            + "ID: " + mod_c.getId() + "\n"
+                                                                                + "Usuario: " + mod_c.getUsuario() + "\n"
+                                                                                + "Password: " + mod_c.getPassword() + "\n"
+                                                                                + "Correo: " + mod_c.getCorreo_electronico() + "\n"
+                                                                                + "Nombre: " + mod_c.getNombre_completo() + "\n"
+                                                                                + "Fecha: " + mod_c.getFecha_nacimiento() + "\n"
+                                                                                + "Cantidad de dinero: " + mod_c.getCantidad_dinero() + "LPS \n"
+                                                                                + "---------------------\n");
+                                                                    System.out.println("Ingrese que desea modificar del cliente: \n"
                                                                             + "1. ID\n"
                                                                             + "2. Usuario\n"
                                                                             + "3. Password\n"
@@ -766,10 +1228,36 @@ public class Lab3_MiguelRojasDanielMorales {
                                                             case 2:
                                                                 //mostrar
                                                                 System.out.println("Que empleado quiere modificar? ");
+                                                                String salida_ModEmpleado = "";
+                                                                for (int i = 0; i < lista_empleados.size(); i++) {
+                                                                    Empleado modEMP = lista_empleados.get(i);
+                                                                    salida_ModEmpleado +=  "[" + i + "] " + "ID: " + modEMP.getId() + "\n"
+                                                                                + "Usuario: " + modEMP.getUsuario() + "\n"
+                                                                                + "Password: " + modEMP.getPassword() + "\n"
+                                                                                + "Correo: " + modEMP.getCorreo_electronico() + "\n"
+                                                                                + "Nombre: " + modEMP.getNombre_completo() + "\n"
+                                                                                + "Fecha: " + modEMP.getFecha_nacimiento() + "\n"
+                                                                                + "Horario de Trabajo: " + modEMP.getHorario_trabajo() + "LPS \n"
+                                                                                + "---------------------\n";
+                                                                }
+                                                                
+                                                                System.out.println("Lista de Empleados\n"
+                                                                        + salida_ModEmpleado + "\n"
+                                                                        + "Eliga un empleado: ");
                                                                 int opEmpleados = input.nextInt();
                                                                 Empleado mod_e = lista_empleados.get(opEmpleados);
                                                                 boolean opModE = true;
                                                                 while (opModE) {
+                                                                    
+                                                                    System.out.println("Empleado Modificando: \n"
+                                                                            + "ID: " + mod_e.getId() + "\n"
+                                                                                + "Usuario: " + mod_e.getUsuario() + "\n"
+                                                                                + "Password: " + mod_e.getPassword() + "\n"
+                                                                                + "Correo: " + mod_e.getCorreo_electronico() + "\n"
+                                                                                + "Nombre: " + mod_e.getNombre_completo() + "\n"
+                                                                                + "Fecha: " + mod_e.getFecha_nacimiento() + "\n"
+                                                                                + "Horario de Trabajo: " + mod_e.getHorario_trabajo() + "LPS \n"
+                                                                                + "---------------------\n\n");
                                                                     System.out.println("Ingrese que desea modificar del empleado: \n"
                                                                             + "1. ID\n"
                                                                             + "2. Usuario\n"
@@ -1094,6 +1582,15 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 Ropa mod_r = lista_ropa.get(op_modRopa);
                                                                 boolean flag_opMod = true;
                                                                 while (flag_opMod) {
+                                                                    
+                                                                    System.out.println("Ropa Modificacndo\n"
+                                                                            + "Nombre: " + mod_r.getNombre() + "\n"
+                                                                            + "Descripcion: " +mod_r.getDescripcion() + "\n"
+                                                                            + "Precio: " + mod_r.getPrecio() + "lps.\n"
+                                                                            + "Sexo: " + mod_r.getSexo() + "\n"
+                                                                            + "Talla: " + mod_r.getTalla() + "\n"
+                                                                            + "---------------------\n");
+                                                                    
                                                                     System.out.print("Opciones Modificacion\n"
                                                                             + "[1] Descripcion\n"
                                                                             + "[2] Nombre\n"
@@ -1193,6 +1690,12 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 //Objeto de Juguete
                                                                 Juguetes j_mod = lista_juguetes.get(op_modJug);
                                                                 while (flag_modJug) {
+                                                                    
+                                                                    System.out.println("Juguete Modificando\n"
+                                                                            + "Nombre: " + j_mod.getNombre() + "\n"
+                                                                            + "Descripcion: " + j_mod.getDescripcion() + "\n"
+                                                                            + "Precio: " + j_mod.getPrecio() + "\n"
+                                                                            + "---------------------\n");
                                                                     System.out.print("Opciones de Modificar\n"
                                                                             + "[1] Nombre\n"
                                                                             + "[2] Descripcion\n"
@@ -1259,6 +1762,14 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                     //Objeto de Comida
                                                                     Comida c_mod = lista_comidas.get(op_modCom);
                                                                     while (flag_modComida) {
+                                                                        
+                                                                        System.out.println("Comida Modificando\n"
+                                                                                + "Nombre: " + c_mod.getNombre() + "\n"
+                                                                                + "Descripcion: " + c_mod.getDescripcion() + "\n"
+                                                                                + "Precio: " + c_mod.getPrecio() + "\n"
+                                                                                + "Tipo: " + c_mod.getTipo() + "\n"
+                                                                                + "Fecha de Caducidad" + c_mod.getFecha_caducidad() + "\n"
+                                                                                + "---------------------\n");
                                                                         System.out.print("Opciones de Modificacion\n"
                                                                                 + "[1] Nombre\n"
                                                                                 + "[2] Descripcion\n"
