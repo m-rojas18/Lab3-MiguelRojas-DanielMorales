@@ -333,53 +333,53 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         switch (op_crearPer) {
                                                             case 1:
                                                                 System.out.println("Ingrese el ID: ");
-                                                                String id = input.next();
+                                                                String idc = input.next();
                                                                 input = new Scanner(System.in);
                                                                 System.out.println();
-                                                                boolean idOrigCheck = false;
-                                                                if (lista_uids.contains(id)) {
+                                                                boolean idcOrigCheck = false;
+                                                                if (lista_uids.contains(idc)) {
                                                                     System.out.println("ID ya existente.");
-                                                                    while (idOrigCheck == false) {
+                                                                    while (idcOrigCheck == false) {
                                                                         System.out.println("Ingrese su id:");
-                                                                        id = input.next();
-                                                                        if (lista_uids.contains(id)) {
+                                                                        idc = input.next();
+                                                                        if (lista_uids.contains(idc)) {
                                                                             System.out.println("ID ya existente");
                                                                         } else {
-                                                                            idOrigCheck = true;
+                                                                            idcOrigCheck = true;
                                                                         }
                                                                     }
                                                                 }
                                                                 //Usuario
                                                                 System.out.print("Ingrese un usuario: ");
-                                                                String usuario = input.nextLine();
+                                                                String usuarioc = input.nextLine();
                                                                 input = new Scanner(System.in);
                                                                 System.out.println();
-                                                                boolean userOrigCheck = false;
-                                                                if (lista_usuarios.contains(usuario)) {
+                                                                boolean userOrigCheckc = false;
+                                                                if (lista_usuarios.contains(usuarioc)) {
                                                                     System.out.println("Usuario ya existente");
-                                                                    while (userOrigCheck == false) {
+                                                                    while (userOrigCheckc == false) {
                                                                         System.out.println("Ingrese un usuario: ");
-                                                                        usuario = input.next();
-                                                                        if (lista_usuarios.contains(usuario)) {
+                                                                        usuarioc = input.next();
+                                                                        if (lista_usuarios.contains(usuarioc)) {
                                                                             System.out.println("Usuario ya existente");
                                                                         } else {
-                                                                            userOrigCheck = true;
+                                                                            userOrigCheckc = true;
                                                                         }
                                                                     }
                                                                 }
                                                                 //Contraseña: 
                                                                 System.out.print("Ingrese una contraseña: ");
-                                                                String password = input.next();
+                                                                String passwordc = input.next();
                                                                 input = new Scanner(System.in);
                                                                 System.out.println();
                                                                 //Correo
                                                                 System.out.print("Ingrese su correo electronico: ");
-                                                                String correo = input.next();
+                                                                String correoc = input.next();
                                                                 input = new Scanner(System.in);
                                                                 System.out.println();
                                                                 //Nombre Completo
                                                                 System.out.print("Ingrese su nombre completo: ");
-                                                                String nombre_completo = input.nextLine();
+                                                                String nombre_completoc = input.nextLine();
                                                                 input = new Scanner(System.in);
                                                                 System.out.println();
                                                                 //Fecha de Nacimiento
@@ -389,19 +389,186 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 System.out.println();
                                                                 //Formatear fecha
                                                                 SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
-                                                                Date fecha_nacimiento = sd.parse(fecha);
-                                                                System.out.println("Ingrese el horario de trabajo: ");
-                                                                String horarioTrabajo = input.nextLine();
+                                                                Date fecha_nacimientoc = sd.parse(fecha);
+                                                                //Cantidad de Dinero
+                                                                System.out.print("Ingrese cantidad de dinero: ");
+                                                                int cantidad_dineroc = input.nextInt();
                                                                 input = new Scanner(System.in);
-                                                                System.out.println("Ingrese el numero de productos que vendio: ");
-                                                                int numProdVend = input.nextInt();
-                                                                Empleado e = new Empleado(horarioTrabajo, numProdVend, id, usuario, password, correo, nombre_completo, fecha_nacimiento);
-                                                                lista_empleados.add(e);
+                                                                Cliente c = new Cliente(cantidad_dineroc, idc, usuarioc, passwordc, correoc, nombre_completoc, fecha_nacimientoc);
+                                                                lista_clientes.add(c);
+                                                                lista_usuarios.add(usuarioc);
                                                                 break;
                                                             case 2:
-                                                                System.out.println("Que persona quiere modificar? ");
-                                                                int opPersona = input.nextInt();
-                                                                Empleado mod_e = lista_empleados.get(opPersona);
+                                                                System.out.println("Ingrese el ID: ");
+                                                                String ide = input.next();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                boolean idOrigChecke = false;
+                                                                if (lista_uids.contains(ide)) {
+                                                                    System.out.println("ID ya existente.");
+                                                                    while (idOrigChecke == false) {
+                                                                        System.out.println("Ingrese su id:");
+                                                                        ide = input.next();
+                                                                        if (lista_uids.contains(ide)) {
+                                                                            System.out.println("ID ya existente");
+                                                                        } else {
+                                                                            idOrigChecke = true;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                //Usuario
+                                                                System.out.print("Ingrese un usuario: ");
+                                                                String usuarioe = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                boolean userOrigCheck = false;
+                                                                if (lista_usuarios.contains(usuarioe)) {
+                                                                    System.out.println("Usuario ya existente");
+                                                                    while (userOrigCheck == false) {
+                                                                        System.out.println("Ingrese un usuario: ");
+                                                                        usuarioe = input.next();
+                                                                        if (lista_usuarios.contains(usuarioe)) {
+                                                                            System.out.println("Usuario ya existente");
+                                                                        } else {
+                                                                            userOrigCheck = true;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                //Contraseña: 
+                                                                System.out.print("Ingrese una contraseña: ");
+                                                                String passworde = input.next();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                //Correo
+                                                                System.out.print("Ingrese su correo electronico: ");
+                                                                String correoe = input.next();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                //Nombre Completo
+                                                                System.out.print("Ingrese su nombre completo: ");
+                                                                String nombre_completoe = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                //Fecha de Nacimiento
+                                                                System.out.print("Ingrese su fecha de nacimiento(dd/mm/yyyy): ");
+                                                                String fechae = input.next();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println();
+                                                                //Formatear fecha
+                                                                SimpleDateFormat sde = new SimpleDateFormat("dd/MM/yyyy");
+                                                                Date fecha_nacimientoe = sde.parse(fechae);
+                                                                System.out.println("Ingrese el horario de trabajo: ");
+                                                                String horarioTrabajoe = input.nextLine();
+                                                                input = new Scanner(System.in);
+                                                                System.out.println("Ingrese el numero de productos que vendio: ");
+                                                                int numProdVende = input.nextInt();
+                                                                Empleado e = new Empleado(horarioTrabajoe, numProdVende, ide, usuarioe, passworde, correoe, nombre_completoe, fecha_nacimientoe);
+                                                                lista_empleados.add(e);
+
+                                                                break;
+                                                            case 3:
+                                                                flag_crearPersona = false;
+                                                                break;
+                                                            default:
+                                                                System.out.println("Ingrese una opcion valida.\n");
+                                                        }
+                                                    }
+                                                    break;
+                                                case 2:
+                                                    boolean flag_modPer = true;
+                                                    while (flag_modPer) {
+                                                        System.out.print("-------------------\n"
+                                                                + "Modificar Persona\n"
+                                                                + "[1] Cliente\n"
+                                                                + "[2] Empleado\n"
+                                                                + "[3] Salir\n"
+                                                                + "Eliga persona a modificar: ");
+                                                        int op_modPer = input.nextInt();
+                                                        System.out.println();
+                                                        switch (op_modPer) {
+                                                            case 1:
+                                                                //muestra
+                                                                System.out.println("Que cliente desea modificar? ");
+                                                                int opCliente = input.nextInt();
+                                                                Cliente mod_c = lista_clientes.get(opCliente);
+                                                                boolean opModC = true;
+                                                                while (opModC) {
+                                                                    System.out.println("Ingrese que desea modificar del empleado: \n"
+                                                                            + "1. ID\n"
+                                                                            + "2. Usuario\n"
+                                                                            + "3. Password\n"
+                                                                            + "4. Correo\n"
+                                                                            + "5. Nombre\n"
+                                                                            + "6. Fecha de Nacimiento\n"
+                                                                            + "7. Cantidad de dinero\n"
+                                                                            + "9. Salida");
+                                                                    int opModEmpleado = input.nextInt();
+                                                                    switch (opModEmpleado) {
+                                                                        case 1:
+                                                                            System.out.println("Ingrese el nuevo ID: ");
+                                                                            String id_c = input.next();
+                                                                            mod_c.setId(id_c);
+                                                                            break;
+                                                                        case 2:
+                                                                            System.out.println("Ingrese el nuevo usuario: ");
+                                                                            String usuario_c = input.next();
+                                                                            boolean userOrigCheck_c = false;
+                                                                            if (lista_usuarios.contains(usuario_c)) {
+                                                                                System.out.println("Usuario ya existente");
+                                                                                while (userOrigCheck_c == false) {
+                                                                                    System.out.println("Ingrese un usuario: ");
+                                                                                    usuario_c = input.next();
+                                                                                    if (lista_usuarios.contains(usuario_c)) {
+                                                                                        System.out.println("Usuario ya existente");
+                                                                                    } else {
+                                                                                        userOrigCheck_c = true;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            mod_c.setUsuario(usuario_c);
+                                                                            break;
+                                                                        case 3:
+                                                                            System.out.println("Ingrese la nueva password: ");
+                                                                            String pass_c = input.next();
+                                                                            mod_c.setPassword(pass_c);
+                                                                            break;
+                                                                        case 4:
+                                                                            System.out.println("Ingrese el nuevo correo: ");
+                                                                            String correo_c = input.nextLine();
+                                                                            input = new Scanner(System.in);
+                                                                            mod_c.setCorreo_electronico(correo_c);
+                                                                            break;
+                                                                        case 5:
+                                                                            System.out.println("Ingrese el nuevo nombre: ");
+                                                                            String nombre_c = input.nextLine();
+                                                                            input = new Scanner(System.in);
+                                                                            mod_c.setNombre_completo(nombre_c);
+                                                                            break;
+                                                                        case 6:
+                                                                            System.out.println("Ingrese la nueva fecha de nacimiento: (dd/MM/yyyy) ");
+                                                                            String fecha_cRAW = input.next();
+                                                                            SimpleDateFormat dfc = new SimpleDateFormat("dd/MM/yyyy");
+                                                                            Date fecha_c = dfc.parse(fecha_cRAW);
+                                                                            mod_c.setFecha_nacimiento(fecha_c);
+                                                                            break;
+                                                                        case 7:
+                                                                            System.out.println("Ingrese la nueva cantidad de dinero: ");
+                                                                            int cantDineroC = input.nextInt();
+                                                                            mod_c.setCantidad_dinero(cantDineroC);
+                                                                            break;
+                                                                        case 8:
+                                                                            opModC = false;
+                                                                            break;
+                                                                        default:
+                                                                            System.out.println("Ingrese una opcion valida");
+                                                                    }
+                                                                }
+                                                                break;
+                                                            case 2:
+                                                                //mostrar
+                                                                System.out.println("Que empleado quiere modificar? ");
+                                                                int opEmpleados = input.nextInt();
+                                                                Empleado mod_e = lista_empleados.get(opEmpleados);
                                                                 boolean opModE = true;
                                                                 while (opModE) {
                                                                     System.out.println("Ingrese que desea modificar del empleado: \n"
@@ -433,7 +600,7 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                                     if (lista_usuarios.contains(usuario_e)) {
                                                                                         System.out.println("Usuario ya existente");
                                                                                     } else {
-                                                                                        userOrigCheck = true;
+                                                                                        userOrigCheck_e = true;
                                                                                     }
                                                                                 }
                                                                             }
@@ -483,30 +650,6 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                 }
                                                                 break;
                                                             case 3:
-                                                                flag_crearPersona = false;
-                                                                break;
-                                                            default:
-                                                                System.out.println("Ingrese una opcion valida.\n");
-                                                        }
-                                                    }
-                                                    break;
-                                                case 2:
-                                                    boolean flag_modPer = true;
-                                                    while (flag_modPer) {
-                                                        System.out.print("-------------------\n"
-                                                                + "Modificar Persona\n"
-                                                                + "[1] Cliente\n"
-                                                                + "[2] Empleado\n"
-                                                                + "[3] Salir\n"
-                                                                + "Eliga persona a modificar: ");
-                                                        int op_modPer = input.nextInt();
-                                                        System.out.println();
-                                                        switch (op_modPer) {
-                                                            case 1:
-                                                                break;
-                                                            case 2:
-                                                                break;
-                                                            case 3:
                                                                 flag_modPer = false;
                                                                 break;
                                                             default:
@@ -527,10 +670,62 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         int op_elimPer = input.nextInt();
                                                         System.out.println();
                                                         switch (op_elimPer) {
-                                                            case 1:
-                                                                break;
-                                                            case 2:
-                                                                break;
+                                                            case 1: {
+                                                                if (lista_clientes.isEmpty()) {
+                                                                    System.out.print("No existe ningun cliente.\n");
+                                                                } else {
+                                                                    String salida_elimC = "";
+                                                                    for (int i = 0; i < lista_ropa.size(); i++) {
+                                                                        Cliente modCli = lista_clientes.get(i);
+                                                                        salida_elimC += "[" + i + "] " + "ID: " + modCli.getId() + "\n"
+                                                                                + "Usuario: " + modCli.getUsuario() + "\n"
+                                                                                + "Password: " + modCli.getPassword() + "\n"
+                                                                                + "Correo: " + modCli.getCorreo_electronico() + "\n"
+                                                                                + "Nombre: " + modCli.getNombre_completo() + "\n"
+                                                                                + "Fecha: " + modCli.getFecha_nacimiento() + "\n"
+                                                                                + "Cantidad de dinero: " + modCli.getCantidad_dinero() + "LPS \n"
+                                                                                + "---------------------\n";
+                                                                    }
+                                                                    System.out.print("Lista de Clientes\n"
+                                                                            + salida_elimC + "\n"
+                                                                            + "Eliga cliente a eliminar: ");
+                                                                    int op_elimCli = input.nextInt();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    lista_clientes.remove(op_elimCli);
+                                                                    System.out.println("Se elimino el cliente exitosamente!!\n");
+                                                                }
+                                                            }
+                                                            break;
+                                                            case 2: {
+                                                                if (lista_empleados.isEmpty()) {
+                                                                    System.out.print("No existe ningun cliente.\n");
+                                                                } else {
+                                                                    String salida_elimE = "";
+                                                                    for (int i = 0; i < lista_empleados.size(); i++) {
+                                                                        Empleado modEmp = lista_empleados.get(i);
+                                                                        salida_elimE += "[" + i + "] " + "ID: " + modEmp.getId() + "\n"
+                                                                                + "Usuario: " + modEmp.getUsuario() + "\n"
+                                                                                + "Password: " + modEmp.getPassword() + "\n"
+                                                                                + "Correo: " + modEmp.getCorreo_electronico() + "\n"
+                                                                                + "Nombre: " + modEmp.getNombre_completo() + "\n"
+                                                                                + "Fecha: " + modEmp.getFecha_nacimiento() + "\n"
+                                                                                + "Horario de trabajo: " + modEmp.getHorario_trabajo() + "\n"
+                                                                                + "Numero de productos: " + modEmp.getNumero_productos() + "\n"
+                                                                                + "---------------------\n";
+                                                                    }
+                                                                    System.out.print("Lista de Empleados\n"
+                                                                            + salida_elimE + "\n"
+                                                                            + "Eliga cliente a eliminar: ");
+                                                                    int op_elimEmp = input.nextInt();
+                                                                    input = new Scanner(System.in);
+                                                                    System.out.println();
+                                                                    lista_empleados.remove(op_elimEmp);
+                                                                    System.out.println("Se elimino el empleado exitosamente!!\n");
+                                                                }
+                                                            }
+                                                            break;
+
                                                             case 3:
                                                                 flag_elimPer = false;
                                                                 break;
@@ -539,6 +734,7 @@ public class Lab3_MiguelRojasDanielMorales {
                                                         }
                                                     }
                                                     break;
+
                                                 case 4:
                                                     flag_menuPersona = false;
                                                     break;
@@ -547,6 +743,7 @@ public class Lab3_MiguelRojasDanielMorales {
                                             }
                                         }
                                         break;
+
                                     case 3:
                                         boolean flag_menuProd = true;
                                         while (flag_menuProd) {
@@ -855,14 +1052,14 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                     System.out.print("Lista de Comidas\n"
                                                                             + salida_modComida + "\n"
                                                                             + "Eliga comida a modificar: ");
-                                                                    
+
                                                                     int op_modCom = input.nextInt();
                                                                     input = new Scanner(System.in);
                                                                     System.out.println();
                                                                     boolean flag_modComida = true;
                                                                     //Objeto de Comida
                                                                     Comida c_mod = lista_comidas.get(op_modCom);
-                                                                    while(flag_modComida){
+                                                                    while (flag_modComida) {
                                                                         System.out.print("Opciones de Modificacion\n"
                                                                                 + "[1] Nombre\n"
                                                                                 + "[2] Descripcion\n"
@@ -873,53 +1070,53 @@ public class Lab3_MiguelRojasDanielMorales {
                                                                                 + "Eliga una opcion: ");
                                                                         int opcion_modCom = input.nextInt();
                                                                         System.out.println();
-                                                                        switch(opcion_modCom){
+                                                                        switch (opcion_modCom) {
                                                                             case 1:
-                                                                            System.out.print("Ingrese nueva descripcion: ");
-                                                                            String mod_descripcion3 = input.nextLine();
-                                                                            mod_descripcion3 = input.nextLine();
-                                                                            c_mod.setDescripcion(mod_descripcion3);
-                                                                            System.out.println("Se modifico el producto exitosamente!!\n");
-                                                                            break;
-                                                                        case 2:
-                                                                            System.out.print("Ingrese nuevo nombre de ropa: ");
-                                                                            String mod_nombre3 = input.next();
-                                                                            c_mod.setNombre(mod_nombre3);
-                                                                            System.out.println("Se modifico el producto exitosamente!!\n");
-                                                                            break;
-                                                                        case 3:
-                                                                            System.out.print("Ingrese nuevo precio de ropa: ");
-                                                                            int mod_precio3 = input.nextInt();
-                                                                            c_mod.setPrecio(mod_precio3);
-                                                                            System.out.println("Se modifico el producto exitosamente!!\n");
-                                                                            break;
-                                                                        case 4:
-                                                                            System.out.println("Modificar Tipo\n"
-                                                                                    + "[1] Bebida\n"
-                                                                                    + "[2] Comida\n"
-                                                                                    + "Eliga una opcion: ");
-                                                                            int op_modTipo = input.nextInt();
-                                                                            input = new Scanner(System.in);
-                                                                            System.out.println();
-                                                                            if (op_modTipo == 1) {
-                                                                                c_mod.setTipo("Bebida");
-                                                                            } else {
-                                                                                c_mod.setTipo("Comida");
-                                                                            }
-                                                                            System.out.println("Se modifico el producto exitosamente!!\n");
-                                                                            break;
-                                                                        case 5:
-                                                                            System.out.print("Ingrese nueva fecha de caducacion (dd/mm/yyyy): ");
-                                                                            String fecha_mod = input.next();
-                                                                            SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
-                                                                            c_mod.setFecha_caducidad(sd.parse(fecha_mod));
-                                                                            System.out.println("Se modifico el producto exitosamente!!\n");
-                                                                            break;
-                                                                        case 6:
-                                                                            flag_modComida = false;
-                                                                            break;
-                                                                        default:
-                                                                            System.out.println("Ingrese una opcion valida.\n");
+                                                                                System.out.print("Ingrese nueva descripcion: ");
+                                                                                String mod_descripcion3 = input.nextLine();
+                                                                                mod_descripcion3 = input.nextLine();
+                                                                                c_mod.setDescripcion(mod_descripcion3);
+                                                                                System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 2:
+                                                                                System.out.print("Ingrese nuevo nombre de ropa: ");
+                                                                                String mod_nombre3 = input.next();
+                                                                                c_mod.setNombre(mod_nombre3);
+                                                                                System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 3:
+                                                                                System.out.print("Ingrese nuevo precio de ropa: ");
+                                                                                int mod_precio3 = input.nextInt();
+                                                                                c_mod.setPrecio(mod_precio3);
+                                                                                System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 4:
+                                                                                System.out.println("Modificar Tipo\n"
+                                                                                        + "[1] Bebida\n"
+                                                                                        + "[2] Comida\n"
+                                                                                        + "Eliga una opcion: ");
+                                                                                int op_modTipo = input.nextInt();
+                                                                                input = new Scanner(System.in);
+                                                                                System.out.println();
+                                                                                if (op_modTipo == 1) {
+                                                                                    c_mod.setTipo("Bebida");
+                                                                                } else {
+                                                                                    c_mod.setTipo("Comida");
+                                                                                }
+                                                                                System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 5:
+                                                                                System.out.print("Ingrese nueva fecha de caducacion (dd/mm/yyyy): ");
+                                                                                String fecha_mod = input.next();
+                                                                                SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
+                                                                                c_mod.setFecha_caducidad(sd.parse(fecha_mod));
+                                                                                System.out.println("Se modifico el producto exitosamente!!\n");
+                                                                                break;
+                                                                            case 6:
+                                                                                flag_modComida = false;
+                                                                                break;
+                                                                            default:
+                                                                                System.out.println("Ingrese una opcion valida.\n");
                                                                         }
                                                                     }
                                                                 }
@@ -1051,6 +1248,7 @@ public class Lab3_MiguelRojasDanielMorales {
                     }
                 }
                 break;
+
                 case 3:
                     resp = 'n';
                     break;
