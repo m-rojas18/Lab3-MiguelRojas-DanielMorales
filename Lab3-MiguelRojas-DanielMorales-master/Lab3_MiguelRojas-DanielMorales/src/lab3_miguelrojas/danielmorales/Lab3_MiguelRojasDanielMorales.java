@@ -1945,7 +1945,8 @@ public class Lab3_MiguelRojasDanielMorales {
 
                                         break;
                                     case 4:
-                                        System.out.println("Factorizacion");
+                                        System.out.println("Factorizacion\n"
+                                                + "No lo terminamos :(.");
                                         break;
                                     case 5:
                                         flag_menuAdmin = false;
