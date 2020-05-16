@@ -16,6 +16,7 @@ public class Lab3_MiguelRojasDanielMorales {
     static ArrayList<Juguetes> lista_juguetes = new ArrayList();
     static ArrayList<Quiosco> lista_quioscos = new ArrayList();
     static ArrayList<Bares> lista_bares = new ArrayList();
+    static int indUserRecibido = 0;
 
     public static void main(String[] args) throws ParseException {
 
@@ -125,7 +126,7 @@ public class Lab3_MiguelRojasDanielMorales {
                             System.out.println("Password incorrecta. ");
                         }
                     } else if (lista_usuarios.contains(userRecibido)) {
-                        int indUserRecibido = 0;
+
                         for (int i = 0; i < lista_clientes.size(); i++) {
                             if (((Cliente) lista_clientes.get(i)).getUsuario().equals(userRecibido)) {
                                 indUserRecibido = i;
@@ -144,6 +145,145 @@ public class Lab3_MiguelRojasDanielMorales {
                     while (opResp == 's' || opResp == 'S') {
                         if (authCLI) {
                             //Logica para uso del cliente.
+                            System.out.println("Bienvenido al Shopping mall de muy muy lejos");
+                            System.out.println("A que establecimiento desea ir: \n"
+                                    + "1. Tienda\n"
+                                    + "2. Quiosco\n"
+                                    + "3. Bar\n");
+                            int opCli = input.nextInt();
+                            switch (opCli) {
+                                case 1:
+                                    if (lista_tiendas.isEmpty()) {
+                                        System.out.print("No existe ninguna tienda.\n");
+                                    } else {
+                                        for (int i = 0; i < lista_tiendas.size(); i++) {
+                                            Tiendas getTie = lista_tiendas.get(i);
+                                            System.out.println("[" + i + "]" + "Nombre: " + getTie.getNombre());
+                                        }
+                                    }
+                                    System.out.println("A que tienda desea ir? : ");
+                                    int opTieSele = input.nextInt();
+                                    Tiendas t = lista_tiendas.get(opTieSele);
+                                    System.out.println("Productos de la tienda: ");
+                                    for (int i = 0; i < t.getProductos().size(); i++) {
+                                        System.out.println("[" + i + "]" + t.getProductos().get(i) + "\n");
+                                    }
+                                    System.out.println("Desea comprar o irse? 1. comprar 2. salir ");
+                                    int inputCompraTie = input.nextInt();
+                                    switch (inputCompraTie) {
+                                        case 1:
+                                            System.out.println("Productos de la tienda: ");
+                                            for (int i = 0; i < t.getProductos().size(); i++) {
+                                                System.out.println("[" + i + "]" + t.getProductos().get(i) + "\n");
+                                            }
+                                            System.out.println("Ingrese el indice del producto que desea comprar: ");
+                                            int opCompTie = input.nextInt();
+                                            int precio = ((Producto) lista_productos.get(opCompTie)).getPrecio();
+                                            int dineroDisp = ((Cliente) lista_clientes.get(indUserRecibido)).getCantidad_dinero();
+                                            int diferencia = dineroDisp - precio;
+                                            if (dineroDisp > precio) {
+                                                System.out.println("Comprado exitosamente. ");
+                                                ((Cliente) lista_clientes.get(indUserRecibido)).setCantidad_dinero(diferencia);
+                                                lista_productos.remove(opCompTie);
+                                            }
+                                            break;
+                                        case 2:
+                                            opResp = 'n';
+                                        default:
+                                            System.out.println("Ingrese una opcion valida");
+                                    }
+
+                                    break;
+
+                                case 2:
+                                    if (lista_quioscos.isEmpty()) {
+                                        System.out.print("No existe ningun quiosco.\n");
+                                    } else {
+                                        for (int i = 0; i < lista_quioscos.size(); i++) {
+                                            Quiosco getQui = lista_quioscos.get(i);
+                                            System.out.println("[" + i + "]" + "Nombre: " + getQui.getNombre());
+                                        }
+                                    }
+                                    System.out.println("A que quiosco desea ir? : ");
+                                    int opQuiSel = input.nextInt();
+                                    Quiosco q = lista_quioscos.get(opQuiSel);
+                                    System.out.println("Productos del quiosco: ");
+                                    for (int i = 0; i < q.getProductos().size(); i++) {
+                                        System.out.println("[" + i + "]" + q.getProductos().get(i));
+                                    }
+
+                                    System.out.println("Desea comprar o irse? 1. comprar 2. salir ");
+                                    int inputCompraQui = input.nextInt();
+                                    switch (inputCompraQui) {
+                                        case 1:
+                                            System.out.println("Productos del quiosco: ");
+                                            for (int i = 0; i < q.getProductos().size(); i++) {
+                                                System.out.println("[" + i + "]" + q.getProductos().get(i) + "\n");
+                                            }
+                                            System.out.println("Ingrese el indice del producto que desea comprar: ");
+                                            int opCompQui = input.nextInt();
+                                            int precio = ((Producto) lista_productos.get(opCompQui)).getPrecio() / 2;
+                                            int dineroDisp = ((Cliente) lista_clientes.get(indUserRecibido)).getCantidad_dinero();
+                                            int diferencia = dineroDisp - precio;
+                                            if (dineroDisp > precio) {
+                                                System.out.println("Comprado exitosamente. ");
+                                                ((Cliente) lista_clientes.get(indUserRecibido)).setCantidad_dinero(diferencia);
+                                                lista_productos.remove(opCompQui);
+                                            }
+                                            break;
+                                        case 2:
+                                            opResp = 'n';
+                                        default:
+                                            System.out.println("Ingrese una opcion valida");
+                                    }
+                                    break;
+                                case 3:
+                                    if (lista_bares.isEmpty()) {
+                                        System.out.print("No existe ningun bar.\n");
+                                    } else {
+                                        for (int i = 0; i < lista_bares.size(); i++) {
+                                            Bares getQui = lista_bares.get(i);
+                                            System.out.println("[" + i + "]" + "Nombre: " + getQui.getNombre());
+                                        }
+                                    }
+                                    System.out.println("A que bar desea ir? : ");
+                                    int opBarSel = input.nextInt();
+                                    Bares b = lista_bares.get(opBarSel);
+                                    System.out.println("Productos del bar: ");
+                                    for (int i = 0; i < b.getProductos().size(); i++) {
+                                        System.out.println("[" + i + "]" + b.getProductos().get(i));
+                                    }
+                                    System.out.println("Desea comprar o irse? 1. comprar 2. salir ");
+                                    int inputCompraBar = input.nextInt();
+                                    switch (inputCompraBar) {
+                                        case 1:
+                                            System.out.println("Productos del bar: ");
+                                            for (int i = 0; i < b.getProductos().size(); i++) {
+                                                System.out.println("[" + i + "]" + b.getProductos().get(i) + "\n");
+                                            }
+                                            System.out.println("Ingrese el indice del producto que desea comprar: ");
+                                            int opCompBar = input.nextInt();
+                                            int precio = ((Producto) lista_productos.get(opCompBar)).getPrecio();
+                                            int dineroDisp = ((Cliente) lista_clientes.get(indUserRecibido)).getCantidad_dinero();
+                                            int diferencia = dineroDisp - precio;
+                                            if (dineroDisp > precio) {
+                                                System.out.println("Comprado exitosamente. ");
+                                                ((Cliente) lista_clientes.get(indUserRecibido)).setCantidad_dinero(diferencia);
+                                                lista_productos.remove(opCompBar);
+                                            }
+                                            break;
+                                        case 2:
+                                            opResp = 'n';
+                                        default:
+                                            System.out.println("Ingrese una opcion valida");
+                                    }
+                                    break;
+                                case 4:
+                                    opResp = 'n';
+                                    break;
+                                default:
+                                    throw new AssertionError();
+                            }
                         } else if (authSUDO == true) {
                             boolean flag_menuAdmin = true;
                             while (flag_menuAdmin) {
